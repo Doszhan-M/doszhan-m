@@ -2,11 +2,6 @@
   // - - - Настройки liveSassCompile - - - - - - - - 
   "liveSassCompile.settings.formats": [
     {
-      "format": "expanded",
-      "extensionName": ".css",
-      "savePath": "/css"
-    },
-    {
       "format": "compressed",
       "extensionName": ".min.css",
       "savePath": "/src/css"
@@ -39,14 +34,18 @@
     "скрола",
   ],
   "cSpell.words": [
+    "AAGY",
     "changefreq",
     "fanblog",
     "Gffa",
     "lastmod",
     "libx",
     "Mengaliyev",
+    "Metrika",
+    "mybots",
     "MZSXTEP",
     "reportbot",
+    "SEFC",
     "SLACKBOT",
     "superfast",
     "ultrafast",
