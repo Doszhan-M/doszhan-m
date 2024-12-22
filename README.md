@@ -1,19 +1,19 @@
-# My PortFolio
+# PortFolio
 https://doszhan-m.pages.dev
 
+## Installation
 
-# Сжатие видео
-```bash
-sudo apt install ffmpeg -y
-ffmpeg -i src/img/127039-737736678.mp4 -vcodec libx265 -crf 40 -preset veryslow output.mp4
-```
-- **-i input.mp4**: Указывает входной файл.
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-- -**vcodec libx264**: Использует кодек H.264 для сжатия.
+2. Run the development server:
+   ```bash
+   npm run dev
+   ```
 
-- **-crf 23**: Уровень качества. Диапазон от 0 (без потерь) до 51 (наихудшее качество). Рекомендуется 18–28 (23 — хорошее компромиссное значение).
-
-- **-preset medium**: Скорость обработки. Варианты: ultrafast, superfast, fast, medium, slow, slower, veryslow. Чем медленнее, тем лучше качество при меньшем размере файла.
-
-- **output.mp4**: Имя выходного файла.
-
+3. Build for production:
+   ```bash
+   npm run build
+   ```

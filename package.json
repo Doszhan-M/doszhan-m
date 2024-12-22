@@ -4,6 +4,7 @@
   "description": "Portfolio website for showcasing projects - https://doszhan-m.pages.dev",
   "devDependencies": {
     "copy-webpack-plugin": "^12.0.2",
+    "dotenv": "^16.4.7",
     "html-loader": "^4.2.0",
     "html-webpack-plugin": "^5.6.3",
     "webpack": "^5.89.0",

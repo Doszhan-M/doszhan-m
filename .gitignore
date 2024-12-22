@@ -8,7 +8,7 @@
 */*:Zone.Identifier
 /node_modules/
 /dist/
-
+.env
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

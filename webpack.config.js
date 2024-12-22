@@ -1,6 +1,11 @@
 const path = require('path');
+const webpack = require('webpack');
+const dotenv = require('dotenv');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+
+
+const env = dotenv.config().parsed || {};
 
 
 module.exports = {
@@ -20,8 +25,11 @@ module.exports = {
               test: /\.(png|svg|mp4|webm|ico|jpe?g|gif)$/,
               type: 'asset/resource',
               generator: {
-                  filename: 'img/[name][ext]'
-              }
+                filename: (pathData) => {
+                    const relativePath = path.relative('./src/img', pathData.filename);
+                    return `img/${relativePath}`;
+                    }
+                }
           },
           {
               test: /\.css$/,
@@ -33,15 +41,18 @@ module.exports = {
     ]
   },
   plugins: [
-      new HtmlWebpackPlugin({
-          template: './src/index.html'
-      }),
-      new CopyWebpackPlugin({
-        patterns: [
-            { from: './src/fonts', to: 'fonts' },
-            { from: './src/img', to: 'img' }
-        ]
-    })      
+    new HtmlWebpackPlugin({
+        template: './src/index.html'
+    }),
+    new CopyWebpackPlugin({
+    patterns: [
+        { from: './src/fonts', to: 'fonts' },
+        { from: './src/img', to: 'img' }
+    ]
+    }),
+    new webpack.DefinePlugin({
+        'process.env.TELEGRAM_TOKEN': JSON.stringify(env.TELEGRAM_TOKEN || process.env.TELEGRAM_TOKEN),
+      }),     
   ],
   devServer: {
         port: 9000,
