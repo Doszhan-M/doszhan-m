@@ -44,6 +44,7 @@ $text_color: rgb(161, 161, 161);
       margin-top: 20%;
     }
   }
+
   .section-title__title {
     opacity: 0;
     transform: translate(-100%, 0px);
@@ -78,16 +79,51 @@ $text_color: rgb(161, 161, 161);
       transform: translate(0px, 0px);
     }
   }
+
   & svg line {
     stroke: rgb(68, 62, 62);
     stroke-width: 3;
   }
 }
 
-.about__content{
+.about__content {
   display: flex;
   flex-direction: column;
   width: 80%;
+}
+
+@keyframes rotateAndFly {
+  0% {
+    transform: rotate(0deg) translateX(0%);
+    opacity: 1;
+  }
+
+  50% {
+    transform: rotate(270deg) translateX(0%);
+    opacity: 1;
+  }
+
+  100% {
+    transform: rotate(270deg) translateX(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes returnToStart {
+  0% {
+    transform: rotate(90deg) translateX(-100%);
+    opacity: 0;
+  }
+
+  50% {
+    transform: rotate(90deg) translateX(0%);
+    opacity: 1;
+  }
+
+  100% {
+    transform: rotate(0deg) translateX(0%);
+    opacity: 1;
+  }
 }
 
 .assurances {
@@ -118,12 +154,15 @@ $text_color: rgb(161, 161, 161);
         transition: all 0.8s ease 0.1s;
 
         &:hover {
-          opacity: 0;
-          transform: rotate(180deg);
-          transition: all 0.8s ease;
+          animation: rotateAndFly 1s ease;
         }
       }
+
+      &.plane_invisible {
+        opacity: 0;
+      }
     }
+
     &:nth-child(2) i {
       @extend %li_icon;
       transform: rotate3d(1, 1, 1, 180deg);
@@ -140,6 +179,7 @@ $text_color: rgb(161, 161, 161);
         }
       }
     }
+
     &:nth-child(3) i {
       @extend %li_icon;
       transform: rotate3d(1, 1, 1, 180deg);
@@ -156,6 +196,7 @@ $text_color: rgb(161, 161, 161);
         }
       }
     }
+
     &:nth-child(4) i {
       @extend %li_icon;
       transform: translateX(100%);
@@ -181,6 +222,7 @@ $text_color: rgb(161, 161, 161);
     & h3 {
       @extend %h3_text;
     }
+
     & p {
       text-align: center;
       @extend %p_text;
@@ -216,7 +258,7 @@ $text_color: rgb(161, 161, 161);
       opacity: 1;
       transform: translate(0px, 0px);
     }
-    
+
     @media screen and (max-width: 812px) {
       & {
         margin-left: 0;
@@ -227,7 +269,7 @@ $text_color: rgb(161, 161, 161);
     & img {
       padding: 0;
       position: relative;
-      width: 350px;
+      width: 400px;
 
       @media screen and (max-width: 812px) {
         & {
@@ -235,15 +277,18 @@ $text_color: rgb(161, 161, 161);
         }
       }
     }
+
     & h3 {
       @extend %h3_text;
       margin-bottom: -2%;
     }
+
     & p {
       @extend %p_text;
       margin-bottom: 0;
       text-align: justify;
     }
+
     & a {
       @extend %p_text;
       text-align: center;
@@ -272,6 +317,7 @@ $text_color: rgb(161, 161, 161);
         width: 100%;
       }
     }
+
     .progress_bar {
       display: flex;
       justify-content: space-between;
@@ -290,6 +336,7 @@ $text_color: rgb(161, 161, 161);
         font-family: Arial, Helvetica, sans-serif;
         font-weight: 800;
       }
+
       & span {
         color: white;
       }
