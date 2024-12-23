@@ -1,16 +1,20 @@
 {
-  // - - - Настройки liveSassCompile - - - - - - - - 
+  
+  "editor.defaultFormatter": "ms-python.black-formatter",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.formatOnSave": true,
+
+  // - - - Настройки liveSassCompile - - - - - - - -
   "liveSassCompile.settings.formats": [
     {
       "format": "compressed",
       "extensionName": ".min.css",
       "savePath": "/src/css"
-    },
+    }
   ],
-  "liveSassCompile.settings.autoprefix": [
-    "> 1%",
-    "last 2 versions",
-  ],
+  "liveSassCompile.settings.autoprefix": ["> 1%", "last 2 versions"],
   "editor.snippetSuggestions": "top",
   // - - - Настройки cSpell - - - - - - - - - - - - -
   "cSpell.language": "en,ru",
@@ -31,12 +35,13 @@
     "todoadd__wrapper",
     "алерт",
     "slaider",
-    "скрола",
+    "скрола"
   ],
   "cSpell.words": [
     "AAGY",
     "changefreq",
     "fanblog",
+    "FASTAPI",
     "Gffa",
     "lastmod",
     "libx",
@@ -53,5 +58,5 @@
     "veryslow",
     "бана"
   ],
-  "liveServer.settings.port": 5501,
+  "liveServer.settings.port": 5501
 }
