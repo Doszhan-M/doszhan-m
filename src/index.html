@@ -112,10 +112,10 @@
                         </div>
 
                         <div class="progress_bar">
-                            <div id="DJANGO" class="w3-container w3-teal" style="width:20%"><span>DJANGO</span>
+                            <div id="DJANGO" class="w3-container w3-teal" style="width:95%"><span>DJANGO</span>
                             </div>
-                            <div id="DJANGO_percent" class="w3-container" style="width:17%">20%</div>
-                            <p style="display: none;">80</p>
+                            <div id="DJANGO_percent" class="w3-container" style="width:5%"></div>
+                            <p style="display: none;">95</p>
                         </div>
 
                         <div class="progress_bar">
@@ -459,12 +459,20 @@
 
         <!-- Yandex.Metrika counter -->
         <script type="text/javascript">
-            (function (m, e, t, r, i, k, a) {
-                m[i] = m[i] || function () {(m[i].a = m[i].a || []).push(arguments)};
-                m[i].l = 1 * new Date(); k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
-            })
-                (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-
+            (function (m, e, t, r, i) {
+                m[i] = m[i] || function () {
+                    if (!m[i].a) {
+                        m[i].a = [];
+                    }
+                    m[i].a.push(arguments);
+                };
+                m[i].l = 1 * new Date();
+                var scriptTag = e.createElement(t);
+                var firstScriptTag = e.getElementsByTagName(t)[0];
+                scriptTag.async = 1;
+                scriptTag.src = r;
+                firstScriptTag.parentNode.insertBefore(scriptTag, firstScriptTag);
+            })(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
             ym(84292423, "init", {
                 clickmap: true,
                 trackLinks: true,

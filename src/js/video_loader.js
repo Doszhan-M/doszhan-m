@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     const videoOptions = [
+        {src: "img/prev_video/line_geo.mp4", type: "video/mp4", poster: "img/prev_video/black.png"},
         {src: "img/prev_video/tv.mp4", type: "video/mp4", poster: "img/prev_video/black.png"},
         {src: "img/prev_video/glosses.mp4", type: "video/mp4", poster: "img/prev_video/black.png"},
         {src: "img/prev_video/circle.mp4", type: "video/mp4", poster: "img/prev_video/black.png"},

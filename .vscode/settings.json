@@ -40,6 +40,7 @@
   "cSpell.words": [
     "AAGY",
     "changefreq",
+    "clickmap",
     "fanblog",
     "FASTAPI",
     "Gffa",
@@ -56,6 +57,7 @@
     "ultrafast",
     "vcodec",
     "veryslow",
+    "webvisor",
     "бана"
   ],
   "liveServer.settings.port": 5501
