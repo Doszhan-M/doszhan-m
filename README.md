@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/7c30f234-d988-4714-9134-927bc93274ef/deploy-status)](https://app.netlify.com/sites/doszhan-m/deploys)
+
 # PortFolio
 - Link to [Cloudflare](https://doszhan-m.pages.dev)
 - Link to [Netlify](https://doszhan-m.netlify.app)

@@ -4,6 +4,9 @@
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  // "[html]": {
+  //   "editor.defaultFormatter": "esbenp.prettier-vscode"
+  // },
   "editor.formatOnSave": true,
 
   // - - - Настройки liveSassCompile - - - - - - - -
@@ -49,6 +52,7 @@
     "libx",
     "Mengaliyev",
     "Metrika",
+    "microcontroller",
     "mybots",
     "MZSXTEP",
     "reportbot",

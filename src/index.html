@@ -230,6 +230,14 @@
                             <a href="#seabattle">learn more</a>
                         </div>
                     </div>
+                    <div class="projects__item">
+                        <img src="img/project_parser/project_parser.webp" alt="project parser">
+                        <div class="projects__title projects__title_center">
+                            <h3>project parser<p>Python</p>
+                            </h3>
+                            <a href="#project_parser">learn more</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -269,7 +277,6 @@
             </div>
         </section>
 
-
         <!-- Popup sections -->
         <section id="slackbot" class="popup">
             <a href="#main" class="popup__dark-area_close" aria-label="close popup"></a>
@@ -295,7 +302,10 @@
                     <div class="popup__text">
                         This bot was developed as part of a hackathon organized by SkillFactory.This application monitors a website for new posts and saves them to a database. Slack bots can be created and assigned to tasks to send notifications to specific channels based on customizable settings. Tasks can operate in different modes, such as instant notifications or scheduled messages. Bots and tasks can be easily managed, edited, or stopped at any time for seamless operation.
                     </div>
-                    <a href="https://github.com/Doszhan-M/SlackBot" class="popup__button" target="_blank">view code</a>
+                    <div class="popup__buttons">
+                        <a href="https://github.com/Doszhan-M/SlackBot" class="popup__button" target="_blank">view code</a>
+                        <a href="https://habr.com/ru/companies/skillfactory/articles/576184/" class="popup__button" target="_blank">read article</a>
+                    </div>
                     <a href="#main" class="popup__close"><i class="far fa-times-circle"></i></a>
                 </div>
             </div>
@@ -320,14 +330,11 @@
 
                         </div>
                     </div>
-
                     <button class="slaider__btn_left"><i class="fas fa-angle-double-left"></i></button>
                     <button class="slaider__btn_right"><i class="fas fa-angle-double-right"></i></button>
-
                     <h2>chat room</h2>
                     <div class="popup__text">
-                        Demo presentation of chat rooms on websocket js and django-channels. Can be embedded in any
-                        django application.
+                        This application is a demo showcasing chat room functionality using WebSocket, JavaScript, and Django Channels. It supports public chats, private messaging, and group rooms with message history, and can be embedded into any Django project.
                     </div>
                     <a href="https://github.com/Doszhan-M/WebSocket-Chat" class="popup__button" target="_blank">view
                         code</a>
@@ -356,7 +363,7 @@
                     <button class="slaider__btn_right"><i class="fas fa-angle-double-right"></i></button>
                     <h2>fan blog web app</h2>
                     <div class="popup__text">
-                        WebSite for fan service on gaming topics
+                        <p>Fan Blog is a simple web application developed as part of my learning journey. This project showcases a basic blogging platform where users can explore and share posts related to gaming. Built using Python and Django, it focuses on clean design and functionality, serving as a demonstration of core web development concepts.</p>
                     </div>
                     <a href="https://github.com/Doszhan-M/Fan_Blog" class="popup__button" target="_blank">view code</a>
                     <a href="#main" class="popup__close"><i class="far fa-times-circle"></i></a>
@@ -384,7 +391,7 @@
                     <button class="slaider__btn_right"><i class="fas fa-angle-double-right"></i></button>
                     <h2>automatic trash bin</h2>
                     <div class="popup__text">
-                        Homemade trash bin with automatic lid opening. Micro controller: arduino uno, servo: MG996.
+                        <p>This project features a homemade automatic trash bin with a lid that opens automatically using an Arduino Uno microcontroller and an MG996 servo motor. It demonstrates the practical application of Arduino for small, everyday automation tasks.</p>
                     </div>
                     <a href="https://github.com/Doszhan-M/Automatic-trash-can" class="popup__button"
                         target="_blank">view code</a>
@@ -440,9 +447,31 @@
                     <button class="slaider__btn_right"><i class="fas fa-angle-double-right"></i></button>
                     <h2>sea battle</h2>
                     <div class="popup__text">
-                        Console game Sea Battle.
+                        Sea Battle is a simple console game developed as a pet project to practice Python programming
                     </div>
                     <a href="https://github.com/Doszhan-M/SeaBattle" class="popup__button" target="_blank">view code</a>
+                    <a href="#main" class="popup__close"><i class="far fa-times-circle"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <section id="project_parser" class="popup">
+            <a href="#main" class="popup__dark-area_close" aria-label="close popup"></a>
+            <div class="popup__body">
+                <div class="popup__content">
+                    <div class="slaider">
+                        <div class="slaider__img-container">
+                            <img data-src="img/project_parser/project_parser-1.webp" src="img/service/plug.jpg" alt="project parser" class="slaider__img">
+                        </div>
+                    </div>
+                    <button class="slaider__btn_left"><i class="fas fa-angle-double-left"></i></button>
+                    <button class="slaider__btn_right"><i class="fas fa-angle-double-right"></i></button>
+                    <h2>Project Parser</h2>
+                    <div class="popup__text">
+                        <p>This script analyzes the structure of a project directory, extracting a detailed folder and file hierarchy. It reads file contents based on configurable filters, making it ideal for generating inputs for AI tools like ChatGPT.</p>
+                        <p>Use this tool to streamline your workflow and generate precise prompts for ChatGPT.</p>
+                    </div>
+                    <a href="https://github.com/Doszhan-M/gpts_code_parser" class="popup__button" target="_blank">view code</a>
                     <a href="#main" class="popup__close"><i class="far fa-times-circle"></i></a>
                 </div>
             </div>
