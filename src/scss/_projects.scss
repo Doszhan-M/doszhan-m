@@ -31,12 +31,11 @@
       }
     }
 
-
-
     .projects__groupe {
       opacity: 0;
-      transform: translate(100%, 0px) rotateY(180deg) perspective(600px);
-      transition: all 1s ease-in-out;
+      filter: blur(10px);
+      transform: translateX(-50px);
+      transition: opacity 1s ease, transform 1s ease, filter 1s ease;
       width: 100%;
       margin: 5% 0 1% 0;
       display: grid;
@@ -44,9 +43,10 @@
       grid-template-rows: 250px;
       grid-gap: 2px;
 
-      &._animation {
+      &._fade-in {
         opacity: 1;
-        transform: translate(0px, 0px) rotateY(0deg) perspective(0px);
+        filter: blur(0);
+        transform: translateX(0);
       }
 
       @media screen and (max-width: 812px) {
@@ -54,6 +54,7 @@
           grid-gap: 5px;
         }
       }
+      
       .projects__item {
         position: relative;
         min-width: 100%;
@@ -314,8 +315,8 @@
 
       .popup__button {
         margin: 0% 25px;
-        width: 100px;
-        height: 40px;
+        width: 200px;
+        height: 50px;
         background-color: rgb(240, 15, 127);
         padding: 1%;
         text-align: center;
@@ -323,6 +324,8 @@
         color: aliceblue;
         font-family: OxinWar;
         font-size: 16px;
+        white-space: nowrap;
+        border-radius: 5px;
 
         @media screen and (max-width: 812px) {
           & {
