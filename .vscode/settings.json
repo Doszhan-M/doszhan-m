@@ -4,9 +4,9 @@
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  // "[html]": {
-  //   "editor.defaultFormatter": "esbenp.prettier-vscode"
-  // },
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "editor.formatOnSave": true,
 
   // - - - Настройки liveSassCompile - - - - - - - -
@@ -47,6 +47,7 @@
     "fanblog",
     "FASTAPI",
     "Gffa",
+    "goszakup",
     "hackathon",
     "lastmod",
     "libx",
@@ -55,6 +56,7 @@
     "microcontroller",
     "mybots",
     "MZSXTEP",
+    "OLED",
     "reportbot",
     "SEFC",
     "SLACKBOT",
