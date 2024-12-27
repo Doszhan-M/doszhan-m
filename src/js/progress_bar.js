@@ -27,7 +27,7 @@ function unMoveProgress(progress_elem_id, percent_elem_id, progress) {
     } else {
       width--;
       progress_elem.style.width = width + "%";
-      percent_elem.innerHTML = width * 1 + "%";
+      percent_elem.innerHTML = "";
     }
   }
 }
