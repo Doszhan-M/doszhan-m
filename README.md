@@ -60,6 +60,8 @@
 
 <br>
 
+
+
 # Installation on Netlify
 1. **Set Up a New Site on Netlify**:
 - Log in to your [Netlify dashboard](https://app.netlify.com/).
