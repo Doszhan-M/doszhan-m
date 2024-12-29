@@ -1,0 +1,82 @@
+{
+  "name": "Doszhan Portfolio",
+  "short_name": "Portfolio",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "description": "Portfolio of Doszhan Mengaliyev showcasing projects and skills.",
+  "icons": [
+    {
+      "src": "/img/service/android-icon-36x36.png",
+      "sizes": "36x36",
+      "type": "image/png",
+      "purpose": "any",
+      "density": "0.75"
+    },
+    {
+      "src": "/img/service/android-icon-48x48.png",
+      "sizes": "48x48",
+      "type": "image/png",
+      "purpose": "any",
+      "density": "1.0"
+    },
+    {
+      "src": "/img/service/android-icon-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "any",
+      "density": "1.5"
+    },
+    {
+      "src": "/img/service/android-icon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any",
+      "density": "2.0"
+    },
+    {
+      "src": "/img/service/android-icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any",
+      "density": "3.0"
+    },
+    {
+      "src": "/img/service/android-icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/img/service/android-icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/img/service/favicon.ico",
+      "type": "image/x-icon",
+      "sizes": "48x48"
+    },
+    {
+      "src": "/img/service/meta_preview.png",
+      "type": "image/jpeg",
+      "sizes": "1200x630"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/img/service/screenshot-wide.png",
+      "sizes": "1920x1080",
+      "type": "image/png",
+      "form_factor": "wide"
+    },
+    {
+      "src": "/img/service/screenshot-narrow.png",
+      "sizes": "375x667",
+      "type": "image/png",
+      "form_factor": "narrow"
+    }
+  ]
+}
