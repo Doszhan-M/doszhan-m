@@ -120,4 +120,11 @@ export function index() {
       }
     });
   }
+
+  // показывать текущий год в footer
+  document.addEventListener("DOMContentLoaded", () => {
+    const yearElement = document.getElementById("currentYear");
+    const currentYear = new Date().getFullYear();
+    yearElement.textContent = `©${currentYear}`;
+  });
 }

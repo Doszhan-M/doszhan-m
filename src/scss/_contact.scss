@@ -41,7 +41,6 @@
       }
     }
 
-
     .contact__form {
       @extend %flex_column;
       width: 40%;
@@ -61,6 +60,11 @@
         height: 40px;
         background: #1e242c;
         color: white;
+      }
+
+      & input::placeholder,
+      & textarea::placeholder {
+        padding-left: 1%;
       }
 
       & textarea {
@@ -84,11 +88,11 @@
         margin: 4px 0;
         min-width: 100%;
         font-size: 16px;
-        font-family:'Raleway', Times, serif;
+        font-family: "Raleway", Times, serif;
         padding: 1px;
         align-items: center;
         justify-content: center;
-        display: none
+        display: none;
       }
 
       & .contact__error-alert,
@@ -96,7 +100,7 @@
         @extend %contact_alert;
 
         &.alert {
-          display: flex
+          display: flex;
         }
 
         & p {
@@ -132,10 +136,10 @@
         padding: 0 40px;
 
         &:hover {
-            background-color: #04c986;
+          background-color: #04c986;
         }
         &:active {
-            border: 4px #252934 solid;
+          border: 4px #252934 solid;
         }
 
         @media screen and (max-width: 812px) {
