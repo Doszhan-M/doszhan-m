@@ -6,9 +6,10 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 const { GenerateSW } = require("workbox-webpack-plugin");
 
 const env = dotenv.config().parsed || {};
+const isProduction = process.env.NODE_ENV === "production";
 
 module.exports = {
-  mode: "development",
+  mode: isProduction ? "production" : "development",
   entry: "./src/js/entry.js",
   output: {
     filename: "bundle.js",
@@ -55,23 +56,27 @@ module.exports = {
         env.TELEGRAM_TOKEN || process.env.TELEGRAM_TOKEN
       ),
     }),
-    new GenerateSW({
-      swDest: "sw.js",
-      maximumFileSizeToCacheInBytes: 20 * 1024 * 1024, // Увеличить лимит до 20 МБ
-      runtimeCaching: [
-        {
-          urlPattern: /\.(?:png|jpg|jpeg|svg|webp|gif)$/,
-          handler: "CacheFirst",
-          options: {
-            cacheName: "images-cache",
-            expiration: {
-              maxEntries: 500, // Максимум файлов
-              maxAgeSeconds: 10 * 24 * 60 * 60, // 10 дней
-            },
-          },
-        },
-      ],
-    }),
+    ...(isProduction
+      ? [
+          new GenerateSW({
+            swDest: "sw.js",
+            maximumFileSizeToCacheInBytes: 20 * 1024 * 1024, // Увеличить лимит до 20 МБ
+            runtimeCaching: [
+              {
+                urlPattern: /\.(?:png|jpg|jpeg|svg|webp|gif|css)$/,
+                handler: "CacheFirst",
+                options: {
+                  cacheName: "pwa-cache-0",
+                  expiration: {
+                    maxEntries: 500, // Максимум файлов
+                    maxAgeSeconds: 10 * 24 * 60 * 60, // 10 дней
+                  },
+                },
+              },
+            ],
+          }),
+        ]
+      : []),
   ],
   devServer: {
     port: 9000,

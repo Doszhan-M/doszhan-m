@@ -339,6 +339,10 @@
         font-size: 16px;
         white-space: nowrap;
         border-radius: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
 
         @media screen and (max-width: 812px) {
           & {
