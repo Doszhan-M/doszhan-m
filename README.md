@@ -55,7 +55,7 @@
 - Go to the **Environment Variables** section in the build settings.
 - Add the environment variable for the Telegram bot token:
   ```
-  TELEGRAM_TOKEN=9774699703:MBUx7liQHbpN7XKSpa5aMWC05mcFDMsiH14
+  TELEGRAM_TOKEN=<token>
   ```
 
 <br>
