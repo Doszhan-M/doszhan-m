@@ -56,27 +56,23 @@ module.exports = {
         env.TELEGRAM_TOKEN || process.env.TELEGRAM_TOKEN
       ),
     }),
-    ...(isProduction
-      ? [
-          new GenerateSW({
-            swDest: "sw.js",
-            maximumFileSizeToCacheInBytes: 20 * 1024 * 1024, // Увеличить лимит до 20 МБ
-            runtimeCaching: [
-              {
-                urlPattern: /\.(?:png|jpg|jpeg|svg|webp|gif|css)$/,
-                handler: "CacheFirst",
-                options: {
-                  cacheName: "pwa-cache-0",
-                  expiration: {
-                    maxEntries: 500, // Максимум файлов
-                    maxAgeSeconds: 5 * 24 * 60 * 60, // 10 дней
-                  },
-                },
-              },
-            ],
-          }),
-        ]
-      : []),
+    new GenerateSW({
+      swDest: "sw.js",
+      maximumFileSizeToCacheInBytes: 20 * 1024 * 1024, // Увеличить лимит до 20 МБ
+      runtimeCaching: [
+        {
+          urlPattern: /\.(?:png|jpg|jpeg|svg|webp|gif|css)$/,
+          handler: "CacheFirst",
+          options: {
+            cacheName: "pwa-cache-0",
+            expiration: {
+              maxEntries: 500, // Максимум файлов
+              maxAgeSeconds: 5 * 24 * 60 * 60, // 10 дней
+            },
+          },
+        },
+      ],
+    }),
   ],
   devServer: {
     port: 9000,
