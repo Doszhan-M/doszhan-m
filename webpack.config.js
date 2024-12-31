@@ -69,7 +69,7 @@ module.exports = {
                   cacheName: "pwa-cache-0",
                   expiration: {
                     maxEntries: 500, // Максимум файлов
-                    maxAgeSeconds: 10 * 24 * 60 * 60, // 10 дней
+                    maxAgeSeconds: 5 * 24 * 60 * 60, // 10 дней
                   },
                 },
               },
