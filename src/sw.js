@@ -1,9 +1,5 @@
 const CACHE_NAME = 'portfolio-cache-v1';
 const urlsToCache = [
-  '/',
-  '/index.html',
-  '/css/main.min.css',
-  '/js/entry.js',
   '/img/service/favicon.ico',
   '/img/service/meta_preview.jpg'
 ];
