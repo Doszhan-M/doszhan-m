@@ -1,3 +1,4 @@
+// Данный worker только для разработки
 const CACHE_NAME = 'portfolio-cache-v1';
 const urlsToCache = [
   '/img/service/favicon.ico',

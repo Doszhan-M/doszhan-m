@@ -152,10 +152,6 @@ $text_color: rgb(161, 161, 161);
         opacity: 1;
         transform: translateX(0%);
         transition: all 0.8s ease 0.1s;
-
-        &:hover {
-          animation: rotateAndFly 1s ease;
-        }
       }
 
       &.plane_invisible {
