@@ -71,7 +71,7 @@ module.exports = (env, argv) => {
                   urlPattern: /\.(?:png|jpg|jpeg|svg|webp|gif|css)$/,
                   handler: "CacheFirst",
                   options: {
-                    cacheName: "pwa-cache-0",
+                    cacheName: "pwa-cache-1",
                     expiration: {
                       maxEntries: 500, // Максимум файлов
                       maxAgeSeconds: 5 * 24 * 60 * 60, // 10 дней
