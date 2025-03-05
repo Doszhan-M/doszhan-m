@@ -39,12 +39,7 @@ Explore my projects and contributions:
 
 ---
 
-<!-- ## Activity Stats
-
-![Doszhan's GitHub Stats](https://github-readme-stats.vercel.app/api?username=doszhan-m&show_icons=true&theme=radical) -->
-
-## 📊 GitHub Profile Summary Cards
-
-| 📜 Overview  | 📈 Most Used Languages | 🏆 Achievements |
-|:-----------:|:--------------------:|:--------------:|
-| ![Profile Overview](https://doszhan-m.github.io/doszhan-m/profile-summary-card-output/default/overview.png) | ![Languages](https://doszhan-m.github.io/doszhan-m/profile-summary-card-output/default/most-commit-language.png) | ![Achievements](https://doszhan-m.github.io/doszhan-m/profile-summary-card-output/default/repos-per-language.png) |
+## Activity Stats
+[![](https://raw.githubusercontent.com/Doszhan-M/doszhan-m/main/profile-summary-card-output/2077/0-profile-details.svg)](https://github.com/vn7n24fzkq/github-profile-summary-cards)
+[![](https://raw.githubusercontent.com/Doszhan-M/doszhan-m/main/profile-summary-card-output/2077/1-repos-per-language.svg)](https://github.com/vn7n24fzkq/github-profile-summary-cards) [![](https://raw.githubusercontent.com/Doszhan-M/doszhan-m/main/profile-summary-card-output/2077/2-most-commit-language.svg)](https://github.com/vn7n24fzkq/github-profile-summary-cards)
+[![](https://raw.githubusercontent.com/Doszhan-M/doszhan-m/main/profile-summary-card-output/2077/3-stats.svg)](https://github.com/vn7n24fzkq/github-profile-summary-cards) [![](https://raw.githubusercontent.com/Doszhan-M/doszhan-m/main/profile-summary-card-output/2077/4-productive-time.svg)](https://github.com/vn7n24fzkq/github-profile-summary-cards)
