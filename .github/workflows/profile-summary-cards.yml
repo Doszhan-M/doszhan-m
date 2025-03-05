@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           persist-credentials: true
-          
+
       - name: Generate GitHub Profile Summary Cards
         uses: vn7n24fzkq/github-profile-summary-cards@release
         env:
@@ -26,3 +26,12 @@ jobs:
           BRANCH_NAME: "main"
           UTC_OFFSET: 5
           AUTO_PUSH: true
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git add profile-summary-card-output/
+          git commit -m "Update Profile Summary Cards" || echo "No changes to commit"
+          git push origin main
+  
