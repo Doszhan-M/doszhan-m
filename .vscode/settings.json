@@ -1,6 +1,4 @@
 {
-  
-  "editor.defaultFormatter": "ms-python.black-formatter",
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -54,6 +52,7 @@
     "dogovor",
     "fanblog",
     "FASTAPI",
+    "fzkq",
     "Gffa",
     "goszakup",
     "hackathon",
@@ -76,5 +75,8 @@
     "webvisor",
     "бана"
   ],
-  "liveServer.settings.port": 5501
+  "liveServer.settings.port": 5501,
+  "[markdown]": {
+    "editor.defaultFormatter": "yzhang.markdown-all-in-one"
+  }
 }

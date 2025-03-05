@@ -39,6 +39,12 @@ Explore my projects and contributions:
 
 ---
 
-## Activity Stats
+<!-- ## Activity Stats
 
-![Doszhan's GitHub Stats](https://github-readme-stats.vercel.app/api?username=doszhan-m&show_icons=true&theme=radical)
+![Doszhan's GitHub Stats](https://github-readme-stats.vercel.app/api?username=doszhan-m&show_icons=true&theme=radical) -->
+
+## 📊 GitHub Profile Summary Cards
+
+|                                                           📜 Overview                                                            |                                                     📈 Most Used Languages                                                     |                                                         🏆 Achievements                                                         |
+| :-----------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------: |
+| ![Profile Overview](https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=Doszhan-M&theme=radical) | ![Languages](https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=Doszhan-M&theme=radical) | ![Achievements](https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=Doszhan-M&theme=radical) |
