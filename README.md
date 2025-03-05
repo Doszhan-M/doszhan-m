@@ -45,6 +45,6 @@ Explore my projects and contributions:
 
 ## 📊 GitHub Profile Summary Cards
 
-|                                                           📜 Overview                                                            |                                                     📈 Most Used Languages                                                     |                                                         🏆 Achievements                                                         |
-| :-----------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------: |
-| ![Profile Overview](https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=Doszhan-M&theme=radical) | ![Languages](https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=Doszhan-M&theme=radical) | ![Achievements](https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=Doszhan-M&theme=radical) |
+| 📜 Overview  | 📈 Most Used Languages | 🏆 Achievements |
+|:-----------:|:--------------------:|:--------------:|
+| ![Profile Overview](https://doszhan-m.github.io/doszhan-m/profile-summary-card-output/default/overview.png) | ![Languages](https://doszhan-m.github.io/doszhan-m/profile-summary-card-output/default/most-commit-language.png) | ![Achievements](https://doszhan-m.github.io/doszhan-m/profile-summary-card-output/default/repos-per-language.png) |
