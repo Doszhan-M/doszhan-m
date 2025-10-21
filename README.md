@@ -10,7 +10,6 @@ I’m Doszhan, a web developer with experience in building modern and scalable w
 Explore my projects and contributions:
 
 - 🌐 [Netlify Portfolio](https://doszhan-m.netlify.app)
-- ☁️ [Cloudflare Pages](https://doszhan-m.pages.dev)
 
 ---
 
@@ -35,7 +34,6 @@ Explore my projects and contributions:
 ## Contact Me
 
 - 💼 [LinkedIn:](https://www.linkedin.com/in/doszhan-m/)
-- 🌟 [Portfolio form:](https://doszhan-m.netlify.app/#contact)
 
 ---
 
