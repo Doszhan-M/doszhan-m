@@ -8,20 +8,45 @@ on:
 jobs:
   build:
     runs-on: self-hosted
-    name: generate-github-profile-summary-cards
     permissions:
-      contents: write    
+      contents: write
+
     steps:
-      - name: Checkout Repository
+      - name: Checkout (настоящая ветка)
         uses: actions/checkout@v4
+        with:
+          ref: main            # <— принудительно чекаутим main
+          fetch-depth: 0
+          persist-credentials: true
+
+      - name: Ensure on main (safety)
+        run: |
+          git checkout -B main origin/main
+          git rev-parse --abbrev-ref HEAD
+          git status
+
+      - name: Configure Git identity
+        run: |
+          git config user.name  "${{ github.actor }}"
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
 
       - name: Generate GitHub Profile Summary Cards
         uses: vn7n24fzkq/github-profile-summary-cards@release
         env:
-          GITHUB_TOKEN: ${{ secrets.PROFILE_STATS }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # write есть в настройках репо
         with:
           USERNAME: ${{ github.repository_owner }}
           BRANCH_NAME: "main"
           UTC_OFFSET: 5
           AUTO_PUSH: true
-  
+
+      # Отладка, если снова что-то не так
+      - name: Debug push (on failure)
+        if: failure()
+        run: |
+          set -x
+          git remote -v
+          git rev-parse --abbrev-ref HEAD
+          git branch -av
+          git status
+          git push -v origin HEAD:main
