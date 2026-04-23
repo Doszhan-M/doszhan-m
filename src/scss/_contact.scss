@@ -60,27 +60,32 @@
         height: 40px;
         background: #1e242c;
         color: white;
+        border-radius: 12px;
+        transition:
+          background-color 0.25s ease,
+          transform 0.25s ease;
       }
 
       & input::placeholder,
       & textarea::placeholder {
-        padding-left: 1%;
+        padding-left: 1.4%;
       }
 
       & textarea {
         height: 170px;
+        padding-top: 14px;
       }
 
       & .contact__success-alert {
         color: #f2f7f5;
         background-color: #04c986;
-        border: 1px solid #157c59;
+        box-shadow: 0 14px 28px rgba(4, 201, 134, 0.24);
       }
 
       & .contact__error-alert {
         color: rgb(230, 182, 182);
         background-color: red;
-        border: 1px solid rgb(228, 224, 224);
+        box-shadow: 0 14px 28px rgba(255, 0, 0, 0.2);
       }
 
       %contact_alert {
@@ -90,6 +95,7 @@
         font-size: 16px;
         font-family: "Raleway", Times, serif;
         padding: 1px;
+        border-radius: 12px;
         align-items: center;
         justify-content: center;
         display: none;
@@ -132,14 +138,23 @@
         align-self: flex-end;
         display: inline-block;
         min-width: 100px;
-        border: 2px white solid;
+        border: none;
+        border-radius: 12px;
+        background: #1e242c;
+        color: #f2f7f5;
         padding: 0 40px;
+        cursor: pointer;
+        letter-spacing: 0.08em;
+        transition:
+          transform 0.2s ease,
+          background-color 0.2s ease;
 
         &:hover {
-          background-color: #04c986;
+          background: #1e242c;
+          transform: translateY(-2px);
         }
         &:active {
-          border: 4px #252934 solid;
+          transform: translateY(0);
         }
 
         @media screen and (max-width: 812px) {
