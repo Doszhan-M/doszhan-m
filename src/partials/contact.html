@@ -1,0 +1,60 @@
+<section id="contact" class="contact">
+  <svg
+    preserveAspectRatio="none"
+    viewBox="0 0 100 102"
+    height="75"
+    width="100%"
+    version="1.1"
+    xmlns="http://www.w3.org/2000/svg"
+    class="svgcolor-light"
+  >
+    <path
+      d="M0 0 L50 100 L100 0 Z"
+      fill="rgb(230, 223, 223)"
+      stroke="white"
+    ></path>
+  </svg>
+  <div class="section-title">
+    <div class="section-title__title anim_item _animation">contact</div>
+    <svg class="anim_item _animation" viewBox="0 0 100 5">
+      <line x1="0" y1="0" x2="100" y2="0" stroke="black" stroke-width="2" />
+    </svg>
+  </div>
+  <div class="contact__content">
+    <p class="contact__subtitle">Have a question or want to work together?</p>
+    <form action="" class="contact__form">
+      <input placeholder="Name" type="text" id="name" required />
+      <input
+        placeholder="Enter email or telegram"
+        type="text"
+        id="email"
+        required
+      />
+      <textarea
+        placeholder="Your message"
+        type="text"
+        id="message"
+        required
+      ></textarea>
+      <div id="success" class="contact__success-alert">
+        <p>Your message was sent successfully!</p>
+        <i class="far fa-times-circle contact__alert_close"></i>
+      </div>
+      <div id="userError" class="contact__error-alert">
+        <p>Fill in all the form fields please!</p>
+        <i class="far fa-times-circle contact__alert_close"></i>
+      </div>
+      <div id="systemError" class="contact__error-alert">
+        <p>System error, please try later!</p>
+        <i class="far fa-times-circle contact__alert_close"></i>
+      </div>
+      <input
+        class="contact__sumbit"
+        onclick="ym(84292423,'reachGoal','send_data') "
+        id="submit"
+        type="button"
+        value="SUBMIT"
+      />
+    </form>
+  </div>
+</section>

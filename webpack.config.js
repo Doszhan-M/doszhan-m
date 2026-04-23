@@ -1,3 +1,4 @@
+const fs = require("fs");
 const path = require("path");
 const webpack = require("webpack");
 const dotenv = require("dotenv");
@@ -7,6 +8,16 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { GenerateSW } = require("workbox-webpack-plugin");
 
 const env = dotenv.config().parsed || {};
+const INCLUDE_PATTERN = /<!--#include\s+file="(.+?)"\s*-->/g;
+
+const resolveHtmlIncludes = (content, loaderContext, resourceDir) =>
+  content.replace(INCLUDE_PATTERN, (match, includePath) => {
+    const filePath = path.resolve(resourceDir, includePath);
+    loaderContext.addDependency(filePath);
+    const fileContent = fs.readFileSync(filePath, "utf8");
+
+    return resolveHtmlIncludes(fileContent, loaderContext, path.dirname(filePath));
+  });
 
 module.exports = (env, argv) => {
   const isProduction = argv.mode === "production";
@@ -23,7 +34,19 @@ module.exports = (env, argv) => {
       rules: [
         {
           test: /\.html$/,
-          use: ["html-loader"],
+          use: [
+            {
+              loader: "html-loader",
+              options: {
+                preprocessor: (content, loaderContext) =>
+                  resolveHtmlIncludes(
+                    content,
+                    loaderContext,
+                    path.dirname(loaderContext.resourcePath)
+                  ),
+              },
+            },
+          ],
         },
         {
           test: /\.(sa|sc|c)ss$/,

@@ -1,0 +1,75 @@
+<footer class="footer">
+  <div class="footer__body">
+    <a href="#about"><i class="footer__icon-up fas fa-angle-double-up"></i></a>
+    <div class="footer__content">
+      <ul class="footer__sosial-links">
+        <li>
+          <a href="https://github.com/Doszhan-M" target="_blank">
+            <i class="fab fa-github-square"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/doszhan-m" target="_blank">
+            <i class="fab fa-linkedin"></i>
+          </a>
+        </li>
+        <li>
+          <a href="tg://resolve?domain=DoszhanM" target="_blank">
+            <i class="fab fa-telegram-plane"> </i>
+          </a>
+        </li>
+      </ul>
+      <div class="copyright">
+        DOSZHAN MENGALIYEV <span id="currentYear">©2025</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Yandex.Metrika counter -->
+  <script type="text/javascript">
+    (function (m, e, t, r, i) {
+      m[i] =
+        m[i] ||
+        function () {
+          if (!m[i].a) {
+            m[i].a = [];
+          }
+          m[i].a.push(arguments);
+        };
+      m[i].l = 1 * new Date();
+      var scriptTag = e.createElement(t);
+      var firstScriptTag = e.getElementsByTagName(t)[0];
+      scriptTag.async = 1;
+      scriptTag.src = r;
+      firstScriptTag.parentNode.insertBefore(scriptTag, firstScriptTag);
+    })(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+    ym(84292423, "init", {
+      clickmap: true,
+      trackLinks: true,
+      accurateTrackBounce: true,
+      webvisor: true,
+    });
+  </script>
+  <noscript>
+    <div>
+      <img
+        src="https://mc.yandex.ru/watch/84292423"
+        style="position: absolute; left: -9999px"
+        alt=""
+      />
+    </div>
+  </noscript>
+
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker
+        .register("sw.js")
+        .then((registration) => {
+          console.log("Service Worker registered with scope:", registration.scope);
+        })
+        .catch((error) => {
+          console.error("Service Worker registration failed:", error);
+        });
+    }
+  </script>
+</footer>
