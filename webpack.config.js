@@ -3,6 +3,7 @@ const webpack = require("webpack");
 const dotenv = require("dotenv");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { GenerateSW } = require("workbox-webpack-plugin");
 
 const env = dotenv.config().parsed || {};
@@ -16,12 +17,32 @@ module.exports = (env, argv) => {
     output: {
       filename: "bundle.js",
       path: path.resolve(__dirname, "dist"),
+      clean: true,
     },
     module: {
       rules: [
         {
           test: /\.html$/,
           use: ["html-loader"],
+        },
+        {
+          test: /\.(sa|sc|c)ss$/,
+          use: [
+            isProduction ? MiniCssExtractPlugin.loader : "style-loader",
+            {
+              loader: "css-loader",
+              options: {
+                url: false,
+                sourceMap: !isProduction,
+              },
+            },
+            {
+              loader: "sass-loader",
+              options: {
+                sourceMap: !isProduction,
+              },
+            },
+          ],
         },
         {
           test: /\.(png|svg|mp4|webm|ico|jpe?g|gif)$/,
@@ -36,19 +57,19 @@ module.exports = (env, argv) => {
             },
           },
         },
-        {
-          test: /\.css$/,
-          type: "asset/resource",
-          generator: {
-            filename: "css/[name][ext]",
-          },
-        },
       ],
     },
     plugins: [
       new HtmlWebpackPlugin({
         template: "./src/index.html",
       }),
+      ...(isProduction
+        ? [
+            new MiniCssExtractPlugin({
+              filename: "css/main.min.css",
+            }),
+          ]
+        : []),
       new CopyWebpackPlugin({
         patterns: [
           { from: "./src/fonts", to: "fonts" },
@@ -86,6 +107,7 @@ module.exports = (env, argv) => {
     devServer: {
       port: 9000,
       open: true,
+      hot: true,
     },
     performance: {
       maxAssetSize: 5000000,

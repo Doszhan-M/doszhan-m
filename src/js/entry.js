@@ -1,3 +1,4 @@
+import "../scss/main.scss";
 import "./video_loader";
 import "./about";
 import { sendContactForm } from './form';

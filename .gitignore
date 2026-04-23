@@ -10,6 +10,7 @@
 /dist/
 .env
 test.html
+.codex
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
