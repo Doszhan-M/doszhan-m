@@ -20,13 +20,13 @@
   .projects__content {
     display: flex;
     flex-direction: column;
-    width: 70%;
+    width: min(1120px, calc(100% - 48px));
     margin-bottom: 15%;
 
     @media screen and (max-width: 812px) {
       & {
         margin-bottom: 20%;
-        width: 100%;
+        width: calc(100% - 20px);
       }
     }
 
@@ -38,9 +38,10 @@
       width: 100%;
       margin: 5% 0 1% 0;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      grid-auto-rows: 250px;
-      grid-gap: 2px;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      grid-auto-flow: dense;
+      gap: 16px;
+      align-items: stretch;
 
       &._fade-in {
         opacity: 1;
@@ -48,20 +49,58 @@
         transform: translateX(0);
       }
 
+      @media screen and (max-width: 1100px) {
+        & {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
       @media screen and (max-width: 812px) {
         & {
-          grid-gap: 5px;
+          grid-template-columns: 1fr;
+          gap: 12px;
         }
       }
 
       .projects__item {
+        grid-column: span 4;
         position: relative;
-        min-width: 100%;
-        min-height: 250px;
-        max-height: 250px;
+        min-width: 0;
+        min-height: 0;
+        max-height: none;
+        aspect-ratio: 3 / 2;
         overflow: hidden;
         border: 1px rgb(71, 71, 71) solid;
         background-color: rgb(230, 223, 223);
+
+        &_featured {
+          grid-column: span 8;
+          aspect-ratio: 16 / 10;
+
+          .projects__title h3 {
+            font-size: 24px;
+          }
+        }
+
+        @media screen and (max-width: 1100px) {
+          & {
+            grid-column: auto;
+          }
+
+          &_featured {
+            grid-column: span 2;
+          }
+        }
+
+        @media screen and (max-width: 812px) {
+          & {
+            aspect-ratio: 16 / 10;
+          }
+
+          &_featured {
+            grid-column: auto;
+          }
+        }
 
         & img {
           display: block;
@@ -70,6 +109,7 @@
           height: 100%;
           object-fit: cover;
           object-position: center top;
+          transition: transform 0.35s ease;
         }
 
         & .projects__title {
@@ -85,14 +125,34 @@
           text-transform: uppercase;
           background-color: rgba(240, 248, 255, 0.9);
           opacity: 0;
+          transition: opacity 0.3s ease;
 
-          &:hover,
-          &:hover h3,
-          &:hover a {
-            opacity: 1;
-            transform: translate(0px, 0px);
+          & h3,
+          & a {
+            transition: all 0.3s ease;
           }
 
+          & h3 {
+            transform: translate(0px, -100%);
+          }
+
+          & a {
+            transform: translate(0px, 100%);
+          }
+        }
+
+        &:hover img {
+          transform: scale(1.04);
+        }
+
+        &:hover .projects__title,
+        &:hover .projects__title h3,
+        &:hover .projects__title a {
+            opacity: 1;
+            transform: translate(0px, 0px);
+        }
+
+        & .projects__title {
           & h3 {
             font-size: 20px;
             color: rgb(71, 71, 71);
@@ -100,8 +160,6 @@
             font-weight: 700;
             text-align: center;
             opacity: 0;
-            transform: translate(0px, -100%);
-            transition: all 0.3s ease;
 
             @media screen and (max-width: 812px) {
               & {
@@ -135,8 +193,6 @@
             text-transform: uppercase;
             border: 2px solid red;
             opacity: 0;
-            transform: translate(0px, 100%);
-            transition: all 0.3s ease;
 
             @media screen and (max-width: 812px) {
               & {
@@ -148,13 +204,15 @@
       }
       .projects__title_center {
         width: 100%;
-        height: 80%;
+        height: 100%;
         position: absolute;
         top: 0;
         left: 0;
         display: flex;
         flex-direction: column;
-        justify-content: space-around;
+        justify-content: space-between;
+        padding: 20px 16px;
+        box-sizing: border-box;
       }
     }
   }
