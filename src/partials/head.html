@@ -1,5 +1,14 @@
 <meta charset="UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<!--
+  Критический CSS прелоадера, инлайново — чтобы он показывался мгновенно,
+  до загрузки основного main.min.css и стороннего w3.css. Дублирует
+  правила #p_prldr / .svg_anm из _header.scss, сам прелоадер не меняется.
+-->
+<style>
+  #p_prldr{position:fixed;left:0;top:0;right:0;bottom:0;background:#000;z-index:30}
+  #p_prldr .svg_anm{margin:auto;position:absolute;top:0;left:0;bottom:0;right:0;width:241px;height:241px;background:url(img/preloader/preloader1.svg) center center no-repeat;background-size:241px;color:#13be3e}
+</style>
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Doszhan" />
 <meta property="og:title" content="Doszhan Mengaliyev — Fullstack Developer" />
@@ -26,7 +35,7 @@
 <meta name="yandex-verification" content="0b0a15774b5e48ec" />
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js" defer></script>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
 <link rel="shortcut icon" href="img/service/favicon.ico" type="image/x-icon" />
 <link rel="manifest" href="manifest.json" />
