@@ -38,6 +38,11 @@ module.exports = (env, argv) => {
             {
               loader: "html-loader",
               options: {
+                // manifest.json копируется как есть — html-loader не должен
+                // подменять ссылку на хешированную копию.
+                sources: {
+                  urlFilter: (attribute, value) => !value.endsWith(".json"),
+                },
                 preprocessor: (content, loaderContext) =>
                   resolveHtmlIncludes(
                     content,
@@ -68,7 +73,7 @@ module.exports = (env, argv) => {
           ],
         },
         {
-          test: /\.(png|svg|mp4|webm|ico|jpe?g|gif)$/,
+          test: /\.(png|svg|mp4|webm|ico|jpe?g|gif|webp)$/,
           type: "asset/resource",
           generator: {
             filename: (pathData) => {
@@ -98,6 +103,8 @@ module.exports = (env, argv) => {
           { from: "./src/fonts", to: "fonts" },
           { from: "./src/img", to: "img" },
           { from: "./src/manifest.json", to: "manifest.json" },
+          { from: "./src/robots.txt", to: "robots.txt" },
+          { from: "./src/sitemap.xml", to: "sitemap.xml" },
         ],
       }),
       new webpack.DefinePlugin({

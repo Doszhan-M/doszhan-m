@@ -46,6 +46,7 @@ $text_color: rgb(109, 105, 105);
   }
 
   .section-title__title {
+    margin: 0;
     opacity: 0;
     transform: translate(-100%, 0px);
     transition: all 0.8s ease 0.1s;
@@ -266,6 +267,7 @@ $text_color: rgb(109, 105, 105);
       padding: 0;
       position: relative;
       width: 400px;
+      height: auto;
       margin-bottom: 24px;
 
       @media screen and (max-width: 812px) {

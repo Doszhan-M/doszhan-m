@@ -61,21 +61,21 @@
     },
     {
       "src": "/img/service/meta_preview.png",
-      "type": "image/jpeg",
+      "type": "image/png",
       "sizes": "1200x630"
     }
   ],
   "screenshots": [
     {
-      "src": "/img/service/screenshot-wide.png",
+      "src": "/img/service/screenshot-wide.webp",
       "sizes": "1920x1080",
-      "type": "image/png",
+      "type": "image/webp",
       "form_factor": "wide"
     },
     {
-      "src": "/img/service/screenshot-narrow.png",
+      "src": "/img/service/screenshot-narrow.webp",
       "sizes": "375x667",
-      "type": "image/png",
+      "type": "image/webp",
       "form_factor": "narrow"
     }
   ]

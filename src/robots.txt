@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://doszhan-m.netlify.app/sitemap.xml

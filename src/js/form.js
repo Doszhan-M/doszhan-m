@@ -65,9 +65,13 @@ export function sendContactForm() {
   // закрыть алерт через кнопку х
   closeBtn.forEach((btn) => {
     btn.addEventListener("click", () => {
-      let parentNode = btn.parentNode;
-      console.log(parentNode);
-      parentNode.classList.remove("alert");
+      btn.parentNode.classList.remove("alert");
+    });
+    btn.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        btn.click();
+      }
     });
   });
 }

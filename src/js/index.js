@@ -31,10 +31,19 @@ export function index() {
   // нажатие на бургер открывает меню
   $(".header__burger").click(function (event) {
     $("header, .header__burger, .header__titles").toggleClass("active");
+    $(this).attr("aria-expanded", $(this).hasClass("active"));
+  });
+  // бургер доступен с клавиатуры
+  $(".header__burger").on("keydown", function (event) {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      $(this).click();
+    }
   });
   // нажатие на ссылку в меню бургера закрывает меню
   $(".header__moblil_close").click(function (event) {
     $("header, .header__burger, .header__titles").removeClass("active");
+    $(".header__burger").attr("aria-expanded", "false");
   });
 
   // Анимация при достижении блока в зону видимости
