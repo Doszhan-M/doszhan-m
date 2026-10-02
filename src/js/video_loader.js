@@ -1,10 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     const videoOptions = [
-        {src: "img/prev_video/line_geo.mp4", type: "video/mp4", poster: "img/prev_video/black.webp"},
-        {src: "img/prev_video/tv.mp4", type: "video/mp4", poster: "img/prev_video/black.webp"},
         {src: "img/prev_video/glosses.mp4", type: "video/mp4", poster: "img/prev_video/black.webp"},
         {src: "img/prev_video/circle.mp4", type: "video/mp4", poster: "img/prev_video/black.webp"},
-        {src: "img/prev_video/rays.mp4", type: "video/mp4", poster: "img/prev_video/rays.webp"},
         {src: "img/prev_video/circle_fire.mp4", type: "video/mp4", poster: "img/prev_video/black.webp"},
         {src: "img/prev_video/comet.mp4", type: "video/mp4", poster: "img/prev_video/comet.webp"}
     ];

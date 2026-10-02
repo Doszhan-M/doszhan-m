@@ -134,6 +134,6 @@ export function index() {
   document.addEventListener("DOMContentLoaded", () => {
     const yearElement = document.getElementById("currentYear");
     const currentYear = new Date().getFullYear();
-    yearElement.textContent = `©${currentYear}`;
+    yearElement.textContent = `©2018-${currentYear}`;
   });
 }
