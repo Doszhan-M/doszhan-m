@@ -29,6 +29,20 @@
     }
   }
 
+  .preview__video_overlay {
+    background: transparent;
+    mix-blend-mode: screen;
+    pointer-events: none;
+    // вырезаем область под роботом, чтобы символы не лежали на нём
+    $robot-mask: radial-gradient(
+      ellipse 17vw 37vh at 23.5vw 53vh,
+      transparent 72%,
+      #000 100%
+    );
+    -webkit-mask-image: $robot-mask;
+    mask-image: $robot-mask;
+  }
+
   .preview__video_robot {
     position: absolute;
     top: 0;

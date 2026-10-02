@@ -6,9 +6,8 @@ export function createAsciiFluid(previewSection) {
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     const canvas = document.createElement("canvas");
-    canvas.classList.add("preview__video");
+    canvas.classList.add("preview__video", "preview__video_overlay");
     canvas.setAttribute("aria-hidden", "true");
-    canvas.style.display = "none";
     previewSection.insertBefore(canvas, previewSection.firstChild);
     const ctx = canvas.getContext("2d");
 
@@ -232,9 +231,8 @@ export function createAsciiFluid(previewSection) {
         }, 150);
     }).observe(canvas);
 
-    function show() {
+    function start() {
         active = true;
-        canvas.style.display = "block";
         setup();
         lastPointer = null;
         lastPointerTime = 0;
@@ -248,11 +246,5 @@ export function createAsciiFluid(previewSection) {
         update();
     }
 
-    function hide() {
-        active = false;
-        canvas.style.display = "none";
-        update();
-    }
-
-    return {show, hide};
+    return {start};
 }
