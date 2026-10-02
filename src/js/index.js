@@ -1,6 +1,9 @@
 import { heroReady } from "./video_loader";
+import { startPreloader } from "./preloader";
 
 export function index() {
+  const preloader = startPreloader();
+
   $(window).ready(function () {
     // шаг вниз перед загрузкой и показа preloader
     $("html, body").animate({ scrollTop: $("#about").offset().top }, 200);
@@ -10,12 +13,13 @@ export function index() {
 
   // Preloader
   $(window).on("load", function () {
-    heroReady.then(function () {
-      var $preloader = $("#p_prldr"),
-        $svg_anm = $preloader.find(".svg_anm");
-      $svg_anm.fadeOut();
-      $preloader.delay(500).fadeOut("slow");
-    });
+    heroReady
+      .then(function () {
+        return preloader.finish();
+      })
+      .then(function () {
+        $("#p_prldr").fadeOut("slow");
+      });
   });
 
   // Плавный scroll до секции

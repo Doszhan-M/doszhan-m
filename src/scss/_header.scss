@@ -27,49 +27,6 @@ body {
   flex-direction: column;
 }
 
-// preloader______________________
-#p_prldr {
-  position: fixed;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  background: black;
-  z-index: 30;
-}
-
-.contpre small {
-  font-size: 30px;
-}
-
-.contpre {
-  // width: 250px;
-  // height: 100px;
-  // position: absolute;
-  // left: 50%;top: 48%;
-  // margin-left:-125px;
-  // margin-top:-75px;
-  // color:#82378f;
-  // font-size:40px;
-  // letter-spacing:-2px;
-  // text-align:center;
-  // line-height:35px;
-}
-
-#p_prldr .svg_anm {
-  margin: auto;
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  width: 241px;
-  height: 241px;
-  background: url(../img/preloader/preloader1.svg) center center no-repeat;
-  background-size: 241px;
-  color: rgb(19, 190, 62);
-}
-
 // _________________________________________________________________
 .header {
   position: fixed;
