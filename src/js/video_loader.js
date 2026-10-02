@@ -1,7 +1,10 @@
 import { createAsciiFluid } from "./ascii_fluid";
 
 document.addEventListener("DOMContentLoaded", () => {
-    const ASCII_DURATION_MS = 20000;
+    const SPLINE_VIEWER_SRC = "https://cdn.spline.design/@splinetool/viewer@2.0.66/build/spline-viewer.js";
+    const SPLINE_SCENE_URL = "https://prod.spline.design/W5XyDudURo5bvUxl/scene.splinecode";
+    // слежение за курсором не работает на тач-устройствах, поэтому робота там не показываем
+    const canHover = window.matchMedia("(hover: hover)").matches;
 
     const options = [
         {kind: "ascii"},
@@ -9,6 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
         {kind: "video", src: "img/prev_video/circle_fire.mp4", type: "video/mp4", poster: "img/prev_video/black.webp"},
         {kind: "video", src: "img/prev_video/comet.mp4", type: "video/mp4", poster: "img/prev_video/comet.webp"}
     ];
+    if (canHover) options.push({kind: "spline"});
 
     const previewSection = document.getElementById("preview");
     if (!previewSection) return;
@@ -36,22 +40,52 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const ascii = createAsciiFluid(previewSection);
 
+    let splineViewer = null;
+
+    function showSpline() {
+        if (!splineViewer) {
+            if (!customElements.get("spline-viewer") && !document.querySelector("script[data-spline-viewer]")) {
+                const script = document.createElement("script");
+                script.type = "module";
+                script.src = SPLINE_VIEWER_SRC;
+                script.dataset.splineViewer = "";
+                document.head.appendChild(script);
+            }
+            splineViewer = document.createElement("spline-viewer");
+            splineViewer.classList.add("preview__video", "preview__video_robot");
+            splineViewer.setAttribute("url", SPLINE_SCENE_URL);
+            splineViewer.setAttribute("aria-hidden", "true");
+            previewSection.insertBefore(splineViewer, previewSection.firstChild);
+        }
+        splineViewer.style.display = "block";
+    }
+
+    function hideSpline() {
+        if (splineViewer) splineViewer.style.display = "none";
+    }
+
     let currentIndex = Math.floor(Math.random() * options.length);
-    let asciiTimer = null;
 
     function playOption(index) {
         const option = options[index];
-        clearTimeout(asciiTimer);
-
         if (option.kind === "ascii") {
             videoElement.pause();
             videoElement.style.display = "none";
+            hideSpline();
             ascii.show();
-            asciiTimer = setTimeout(playNext, ASCII_DURATION_MS);
+            return;
+        }
+
+        if (option.kind === "spline") {
+            videoElement.pause();
+            videoElement.style.display = "none";
+            ascii.hide();
+            showSpline();
             return;
         }
 
         ascii.hide();
+        hideSpline();
         videoElement.style.display = "";
         videoElement.poster = option.poster;
         sourceElement.src = option.src;

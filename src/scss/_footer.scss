@@ -69,6 +69,18 @@
         & span {
           color: #e31b6d;
         }
+
+        &.copyright_credit {
+          margin-top: 0;
+          font-size: 11px;
+          letter-spacing: 1px;
+          text-align: center;
+
+          & a {
+            color: inherit;
+            text-decoration: underline;
+          }
+        }
       }
     }
   }
