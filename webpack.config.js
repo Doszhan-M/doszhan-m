@@ -117,6 +117,9 @@ module.exports = (env, argv) => {
             new GenerateSW({
               swDest: "sw.js",
               maximumFileSizeToCacheInBytes: 20 * 1024 * 1024, // Увеличить лимит до 20 МБ
+              // видео не предзагружаем: иначе service worker качает ~30 МБ при первом заходе,
+              // включая десктоп, где видео не показываются
+              exclude: [/\.map$/, /^manifest.*\.js$/, /\.mp4$/],
               runtimeCaching: [
                 {
                   urlPattern: /\.(?:png|jpg|jpeg|svg|webp|gif|css)$/,
