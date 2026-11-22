@@ -63,7 +63,8 @@
   grid-column: span 2;
   overflow: hidden;
 
-  &_featured {
+  &_featured,
+  &_wide {
     grid-column: span 3;
   }
 
@@ -75,6 +76,7 @@
   @media screen and (max-width: 1024px) {
     &,
     &_featured,
+    &_wide,
     .projects__grid.is-filtered & {
       grid-column: span 1;
     }
