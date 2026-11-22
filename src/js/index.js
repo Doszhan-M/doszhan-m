@@ -11,7 +11,7 @@ export function index() {
         return preloader.finish();
       })
       .then(function () {
-        $("#p_prldr").fadeOut("slow");
+        preloader.hide();
       });
   });
 

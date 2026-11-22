@@ -5,16 +5,41 @@
   до загрузки основного main.min.css.
 -->
 <style>
-  #p_prldr{position:fixed;left:0;top:0;right:0;bottom:0;background:#000;z-index:30}
-  #p_prldr .pl_box{height:280px;width:280px;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:#06140a;border-radius:100%;overflow:hidden}
-  #p_prldr .pl_percent{position:absolute;left:0;top:0;z-index:3;width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:#fff;font:64px/1 Arial,Helvetica,sans-serif}
-  #p_prldr .pl_percent_sign{font-size:32px;margin-left:4px}
-  #p_prldr .pl_water{position:absolute;left:0;top:0;z-index:2;width:100%;height:100%;transform:translate(0,100%);background:#13be3e;transition:transform .3s}
-  #p_prldr .pl_wave{width:200%;position:absolute;bottom:100%}
-  #p_prldr .pl_wave_back{right:0;fill:#8ff0a8;animation:pl-wave-back 1.4s infinite linear}
-  #p_prldr .pl_wave_front{left:0;fill:#13be3e;margin-bottom:-1px;animation:pl-wave-front .7s infinite linear}
-  @keyframes pl-wave-front{100%{transform:translate(-50%,0)}}
-  @keyframes pl-wave-back{100%{transform:translate(50%,0)}}
+  /* попапы скрыты с первого кадра: иначе, пока грузится main.css, последний
+     попап виден и плавно гаснет поверх прелоадера */
+  .popup{position:fixed;inset:0;opacity:0;visibility:hidden}
+
+  #p_prldr{--p:0;position:fixed;inset:0;z-index:1000;overflow:hidden;color:#e8edf2;
+    background:radial-gradient(ellipse 70% 45% at 50% 110%,rgba(17,217,224,calc(.05 + var(--p)*.0022)),transparent 70%),
+      linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px) 0 0/64px 64px,
+      linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px) 0 0/64px 64px,#05070a;
+    font-family:"Space Grotesk",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+    transition:transform 1s cubic-bezier(.77,0,.18,1)}
+  #p_prldr.is-done{transform:translateY(-100%)}
+  #p_prldr .pl_inner{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;
+    padding:clamp(20px,4vw,48px);transition:opacity .5s ease,transform .8s cubic-bezier(.77,0,.18,1)}
+  #p_prldr.is-done .pl_inner{opacity:0;transform:translateY(-12vh)}
+  #p_prldr .pl_top,#p_prldr .pl_meta{display:flex;justify-content:space-between;align-items:center}
+  #p_prldr .pl_logo{font-size:24px;font-weight:700;letter-spacing:-.04em}
+  #p_prldr .pl_logo span{color:#11d9e0}
+  #p_prldr .pl_mono{font:13px/1 "JetBrains Mono",ui-monospace,Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:#8b96a3}
+  #p_prldr .pl_num{position:relative;align-self:center;font-size:clamp(110px,24vw,300px);font-weight:600;line-height:.9;
+    letter-spacing:-.06em;font-variant-numeric:tabular-nums;white-space:nowrap}
+  #p_prldr .pl_num small{font-size:.28em;letter-spacing:0;margin-left:.08em;vertical-align:.18em}
+  #p_prldr .pl_num_outline{color:transparent;-webkit-text-stroke:1.5px rgba(232,237,242,.28)}
+  #p_prldr .pl_num_fill{position:absolute;inset:0;
+    background:linear-gradient(180deg,#e8fdff 0%,#11d9e0 55%,#7c5cff 120%);-webkit-background-clip:text;background-clip:text;color:transparent;
+    clip-path:inset(calc(100% - var(--p)*1%) 0 0 0);transition:clip-path .35s cubic-bezier(.22,1,.36,1)}
+  #p_prldr .pl_bar{position:relative;height:2px;margin-bottom:16px;background:rgba(255,255,255,.08);border-radius:2px;overflow:hidden}
+  #p_prldr .pl_bar_fill{position:absolute;inset:0;transform-origin:left;transform:scaleX(calc(var(--p)/100));
+    background:linear-gradient(90deg,#7c5cff,#11d9e0);box-shadow:0 0 16px #11d9e0;transition:transform .35s cubic-bezier(.22,1,.36,1)}
+  #p_prldr #p_status::before{content:"";display:inline-block;width:6px;height:6px;margin-right:10px;border-radius:50%;
+    background:#11d9e0;vertical-align:1px;animation:pl-blink 1s steps(2,start) infinite}
+  @keyframes pl-blink{to{visibility:hidden}}
+  @media (prefers-reduced-motion:reduce){
+    #p_prldr{transition:opacity .4s ease}
+    #p_prldr.is-done{transform:none;opacity:0}
+  }
 </style>
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Doszhan" />
