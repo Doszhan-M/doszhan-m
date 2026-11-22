@@ -1,11 +1,11 @@
 {
-  "name": "Doszhan Portfolio",
+  "name": "Doszhan Mengaliyev — Portfolio",
   "short_name": "Portfolio",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#000000",
-  "description": "Portfolio of Doszhan Mengaliyev showcasing projects and skills.",
+  "background_color": "#05070a",
+  "theme_color": "#05070a",
+  "description": "Portfolio of Doszhan Mengaliyev, senior fullstack developer: projects, skills and contacts.",
   "icons": [
     {
       "src": "/img/service/android-icon-36x36.png",
@@ -58,11 +58,6 @@
       "src": "/img/service/favicon.ico",
       "type": "image/x-icon",
       "sizes": "48x48"
-    },
-    {
-      "src": "/img/service/meta_preview.png",
-      "type": "image/png",
-      "sizes": "1200x630"
     }
   ],
   "screenshots": [
