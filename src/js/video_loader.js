@@ -30,7 +30,10 @@ function startDesktopHero(previewSection) {
     // выгружать сцену, пока она вне экрана, чтобы не тратить GPU/CPU
     viewer.setAttribute("unloadable", "");
     viewer.setAttribute("aria-hidden", "true");
-    viewer.addEventListener("load-complete", resolveHeroReady, {once: true});
+    viewer.addEventListener("load-complete", () => {
+        viewer.classList.add("is-ready");
+        resolveHeroReady();
+    }, {once: true});
     viewer.addEventListener("splineerror", resolveHeroReady, {once: true});
     setTimeout(resolveHeroReady, HERO_READY_TIMEOUT_MS);
     previewSection.insertBefore(viewer, previewSection.firstChild);

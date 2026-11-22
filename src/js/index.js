@@ -1,24 +1,34 @@
 import { heroReady } from "./video_loader";
 import { startPreloader } from "./preloader";
+import { registerServiceWorker } from "./sw-register";
 
 const SECTIONS = ["preview", "about", "projects", "contact"];
 
-function pageLoaded() {
-  return document.readyState === "complete"
-    ? Promise.resolve()
-    : new Promise((resolve) =>
-        window.addEventListener("load", resolve, { once: true })
-      );
+// Прелоадер держится не дольше этого времени от начала загрузки страницы
+const PRELOADER_MAX_MS = 3500;
+
+// Готовность первого экрана: шрифты и hero (робот или видео), но не дольше PRELOADER_MAX_MS.
+// window.load не ждём: он ждёт всё на странице, включая видео и тяжёлый Spline, —
+// на медленном мобильном интернете это десятки секунд.
+function firstScreenReady() {
+  const fonts = document.fonts ? document.fonts.ready : Promise.resolve();
+  const limit = new Promise((resolve) =>
+    setTimeout(resolve, Math.max(0, PRELOADER_MAX_MS - performance.now()))
+  );
+  return Promise.race([Promise.all([fonts, heroReady]), limit]);
 }
 
 export function index() {
   const preloader = startPreloader();
 
-  // Прелоадер уходит, когда загружена страница и готов первый экран (робот или видео)
-  pageLoaded()
-    .then(() => heroReady)
+  firstScreenReady()
     .then(() => preloader.finish())
-    .then(() => preloader.hide());
+    .then(() => preloader.hide())
+    .then(() => {
+      // первый экран показан — теперь можно второстепенное (Метрика ждёт это событие в footer.html)
+      window.dispatchEvent(new Event("site:ready"));
+      registerServiceWorker();
+    });
 
   const header = document.querySelector(".header");
   const burger = document.querySelector(".header__burger");

@@ -49,6 +49,13 @@
     left: -55vw;
     width: 155vw;
     height: 100vh;
+    // прелоадер не ждёт Spline: робот проявляется, когда сцена загрузится (video_loader.js)
+    opacity: 0;
+    transition: opacity 1.2s ease;
+
+    &.is-ready {
+      opacity: 1;
+    }
   }
 
   .preview__title {

@@ -232,28 +232,41 @@
 
 // ─── Popup (case study) ─────────────────────────────────────────────
 // Открывается через :target по хешу в url.
+// Закрытый попап — display: none, а не только opacity: иначе браузер считает его картинки
+// видимыми (fixed на весь экран), loading="lazy" не срабатывает и все слайды всех попапов
+// качаются при первом заходе (~3.7 МБ). Анимация открытия — через @starting-style,
+// закрытия — через transition-behavior: allow-discrete; в старых браузерах просто без анимации.
 .popup {
   position: fixed;
   inset: 0;
   z-index: 40;
+  display: none;
   overflow-x: hidden;
   overflow-y: auto;
   background: rgba(3, 4, 6, 0.78);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   opacity: 0;
-  visibility: hidden;
   transition:
     opacity 0.4s var(--ease),
-    visibility 0.4s;
+    display 0.4s allow-discrete;
 
   &:target {
+    display: block;
     opacity: 1;
-    visibility: visible;
+
+    @starting-style {
+      opacity: 0;
+    }
 
     .popup__content {
       opacity: 1;
       transform: none;
+
+      @starting-style {
+        opacity: 0;
+        transform: translateY(40px) scale(0.97);
+      }
     }
   }
 

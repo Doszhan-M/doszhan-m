@@ -36,7 +36,7 @@ Any change in `src/scss/*.scss` is picked up by the dev server automatically.
 npm run build
 ```
 
-Production build extracts the final stylesheet into `dist/css/main.min.css`.
+Production build extracts the final stylesheet into `dist/css/main.<hash>.min.css` and the script into `dist/js/main.<hash>.js`; cache headers for Netlify are in `src/_headers`.
 
 ## SCSS Source
 

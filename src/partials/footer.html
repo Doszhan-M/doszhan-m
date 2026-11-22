@@ -38,7 +38,10 @@
     </div>
   </div>
 
-  <!-- Yandex.Metrika counter -->
+  <!-- Yandex.Metrika counter.
+       Очередь ym() создаётся сразу (вызовы копятся), а сам tag.js грузится после ухода
+       прелоадера — событие site:ready из src/js/index.js, запасной вариант через 10 с, —
+       чтобы ~100 КБ Метрики не делили канал с первым экраном. -->
   <script type="text/javascript">
     (function (m, e, t, r, i) {
       m[i] =
@@ -50,11 +53,20 @@
           m[i].a.push(arguments);
         };
       m[i].l = 1 * new Date();
-      var scriptTag = e.createElement(t);
-      var firstScriptTag = e.getElementsByTagName(t)[0];
-      scriptTag.async = 1;
-      scriptTag.src = r;
-      firstScriptTag.parentNode.insertBefore(scriptTag, firstScriptTag);
+      var loaded = false;
+      function load() {
+        if (loaded) {
+          return;
+        }
+        loaded = true;
+        var scriptTag = e.createElement(t);
+        var firstScriptTag = e.getElementsByTagName(t)[0];
+        scriptTag.async = 1;
+        scriptTag.src = r;
+        firstScriptTag.parentNode.insertBefore(scriptTag, firstScriptTag);
+      }
+      m.addEventListener("site:ready", load, { once: true });
+      setTimeout(load, 10000);
     })(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
     ym(84292423, "init", {
       clickmap: true,
@@ -73,16 +85,4 @@
     </div>
   </noscript>
 
-  <script>
-    if ("serviceWorker" in navigator) {
-      navigator.serviceWorker
-        .register("sw.js")
-        .then((registration) => {
-          console.log("Service Worker registered with scope:", registration.scope);
-        })
-        .catch((error) => {
-          console.error("Service Worker registration failed:", error);
-        });
-    }
-  </script>
 </footer>

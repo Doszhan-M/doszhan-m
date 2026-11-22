@@ -100,6 +100,10 @@ function onHashChange() {
   }
 
   if (!sliders.has(popup)) {
+    // слайды за краем ленивая загрузка не трогает — грузим все слайды открытого попапа сразу
+    popup.querySelectorAll('img[loading="lazy"]').forEach((img) => {
+      img.loading = "eager";
+    });
     sliders.set(popup, createSlider(popup));
   }
   const slider = sliders.get(popup);

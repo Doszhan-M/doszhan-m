@@ -13,7 +13,7 @@ const STATUSES = [
 export function startPreloader() {
   const root = document.getElementById("p_prldr");
   if (!root) {
-    return { finish: () => Promise.resolve(), hide: () => {} };
+    return { finish: () => Promise.resolve(), hide: () => Promise.resolve() };
   }
 
   const counters = root.querySelectorAll(".p_count");
@@ -62,12 +62,20 @@ export function startPreloader() {
         }, 20);
       });
     },
-    // шторка уезжает вверх и открывает hero, затем элемент убирается из DOM
+    // шторка уезжает вверх и открывает hero, затем элемент убирается из DOM;
+    // промис выполняется, когда прелоадер убран
     hide() {
       root.classList.add("is-done");
-      const remove = () => root.remove();
-      root.addEventListener("transitionend", (e) => e.target === root && remove());
-      setTimeout(remove, 1500); // на случай, если transitionend не придёт
+      return new Promise((resolve) => {
+        const remove = () => {
+          if (root.isConnected) {
+            root.remove();
+          }
+          resolve();
+        };
+        root.addEventListener("transitionend", (e) => e.target === root && remove());
+        setTimeout(remove, 1500); // на случай, если transitionend не придёт
+      });
     },
   };
 }

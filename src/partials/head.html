@@ -2,12 +2,21 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <!--
   Критический CSS прелоадера, инлайново — чтобы он показывался мгновенно,
-  до загрузки основного main.min.css.
+  до загрузки основного CSS.
 -->
 <style>
+  /* Шрифты сайта (вариативные, только латиница). Здесь, а не в main.scss, — чтобы прелоадер
+     сразу рисовался нужным шрифтом. Space Grotesk и JetBrains Mono — SIL OFL 1.1, src/fonts/OFL-*.txt */
+  @font-face{font-family:"Space Grotesk";font-style:normal;font-display:swap;font-weight:300 700;
+    src:url(fonts/space-grotesk-latin-wght-normal.woff2) format("woff2-variations");
+    unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  @font-face{font-family:"JetBrains Mono";font-style:normal;font-display:swap;font-weight:100 800;
+    src:url(fonts/jetbrains-mono-latin-wght-normal.woff2) format("woff2-variations");
+    unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+
   /* попапы скрыты с первого кадра: иначе, пока грузится main.css, последний
      попап виден и плавно гаснет поверх прелоадера */
-  .popup{position:fixed;inset:0;opacity:0;visibility:hidden}
+  .popup{position:fixed;inset:0;display:none}
 
   #p_prldr{--p:0;position:fixed;inset:0;z-index:1000;overflow:hidden;color:#e8edf2;
     background:radial-gradient(ellipse 70% 45% at 50% 110%,rgba(17,217,224,calc(.05 + var(--p)*.0022)),transparent 70%),
@@ -110,12 +119,9 @@
 <meta name="yandex-verification" content="0b0a15774b5e48ec" />
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link
-  rel="stylesheet"
-  href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap"
-/>
+<!-- Шрифты свои (src/fonts, OFL), не Google Fonts: внешний сервер бывал недоступен и задерживал загрузку -->
+<link rel="preload" href="fonts/space-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="fonts/jetbrains-mono-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
 <meta name="theme-color" content="#05070a" />
 <link rel="shortcut icon" href="img/service/favicon.ico" type="image/x-icon" />
 <link rel="manifest" href="manifest.json" />

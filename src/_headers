@@ -1,0 +1,16 @@
+# Заголовки для Netlify (копируется в dist/_headers при сборке).
+# По умолчанию Netlify отдаёт всё с max-age=0 — браузер перепроверяет каждый файл на каждом заходе.
+
+# JS и CSS — с хешем содержимого в имени (webpack.config.js): новый файл = новое имя
+/js/*
+  Cache-Control: public, max-age=31536000, immutable
+/css/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Картинки и шрифт без хеша: заменяя файл, лучше давать ему новое имя
+/img/*
+  Cache-Control: public, max-age=604800
+/fonts/*
+  Cache-Control: public, max-age=2592000
+
+# index.html, sw.js, manifest.json — по умолчанию Netlify (max-age=0): обновления видны сразу
