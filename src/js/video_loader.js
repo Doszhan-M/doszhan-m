@@ -35,6 +35,20 @@ function startDesktopHero(previewSection) {
     setTimeout(resolveHeroReady, HERO_READY_TIMEOUT_MS);
     previewSection.insertBefore(viewer, previewSection.firstChild);
 
+    // плашку «Built with Spline» viewer рисует в своём (открытом) shadow DOM как #logo
+    const hideSplineLogo = () => {
+        const root = viewer.shadowRoot;
+        if (root && !root.querySelector("style[data-hide-logo]")) {
+            const style = document.createElement("style");
+            style.dataset.hideLogo = "";
+            style.textContent = "#logo{display:none!important}";
+            root.appendChild(style);
+        }
+    };
+    customElements.whenDefined("spline-viewer").then(hideSplineLogo);
+    // viewer может перерисовать содержимое shadow root при загрузке сцены
+    viewer.addEventListener("load-complete", hideSplineLogo);
+
     ascii.start();
 }
 
