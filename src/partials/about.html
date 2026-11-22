@@ -1,144 +1,160 @@
-<section id="about" class="about">
-  <div class="section-title">
-    <h2 class="section-title__title anim_item _animation">About me</h2>
-    <svg class="anim_item _animation" viewBox="0 0 100 5">
-      <line x1="0" y1="0" x2="100" y2="0" stroke="black" stroke-width="2" />
-    </svg>
-  </div>
-  <div class="about__content">
-    <div class="assurances">
-      <div class="assurances__item">
-        <i class="fas fa-fighter-jet anim_item"></i>
-        <h3>Fast</h3>
-        <p>Fast load times and lag free interaction, my highest priority</p>
+<section id="about" class="section about">
+  <div class="section__inner">
+    <div class="section-head reveal">
+      <span class="eyebrow"><span class="eyebrow__num">01</span> / about</span>
+      <h2 class="section-head__title">
+        I build products that are <em>fast</em>, <em>reliable</em> and ready to scale.
+      </h2>
+    </div>
+
+    <div class="bento">
+      <!-- Био -->
+      <article class="card bento__bio reveal">
+        <div class="bio__photo">
+          <img
+            src="img/myself/myself-portrait.webp"
+            alt="Doszhan Mengaliyev"
+            width="300"
+            height="572"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <div class="bio__body">
+          <div class="status">
+            <span class="status__dot" aria-hidden="true"></span>
+            Open to freelance &amp; full-time roles
+          </div>
+          <h3 class="bio__title">Hi, I'm Doszhan</h3>
+          <p>
+            A senior fullstack developer from Almaty with 9 years of experience.
+            Whether you're looking to enhance an existing system or build a
+            brand-new product, I'm here to help bring your ideas to life.
+          </p>
+          <p>
+            I focus on clean, efficient code and scalable architecture, and I
+            enjoy working both independently and in teams to deliver great
+            results.
+          </p>
+          <div class="bio__meta">
+            <span><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Almaty, KZ</span>
+            <span><i class="far fa-clock" aria-hidden="true"></i> <span id="localTime">--:--</span> local time</span>
+          </div>
+          <a href="#contact" class="btn btn_primary">
+            Let's make something special
+            <i class="fas fa-arrow-right" aria-hidden="true"></i>
+          </a>
+        </div>
+      </article>
+
+      <!-- Цифры -->
+      <div class="bento__stats">
+        <div class="card stat reveal">
+          <span class="stat__value"><span data-count="9">9</span>+</span>
+          <span class="stat__label">years of commercial experience</span>
+        </div>
+        <div class="card stat reveal">
+          <span class="stat__value"><span data-count="200">200</span>K+</span>
+          <span class="stat__label">companies on Uchet.EDO, which I led as tech lead</span>
+        </div>
+        <div class="card stat reveal">
+          <span class="stat__value"><span data-count="1000">1000</span>+</span>
+          <span class="stat__label">users of Finsight, my own product</span>
+        </div>
+        <div class="card stat reveal">
+          <span class="stat__value"><span data-count="25">25</span>+</span>
+          <span class="stat__label">government data sources integrated</span>
+        </div>
       </div>
-      <div class="assurances__item">
-        <i class="fas fa-dice-d20 anim_item"></i>
-        <h3>Reliability</h3>
-        <p>I pay special attention to the stability of the server side</p>
+
+      <!-- Принципы -->
+      <div class="card bento__values reveal">
+        <span class="card__label">// how I work</span>
+        <ul class="values">
+          <li class="values__item">
+            <i class="fas fa-bolt" aria-hidden="true"></i>
+            <div>
+              <h3>Fast</h3>
+              <p>Fast load times and lag-free interaction are my highest priority.</p>
+            </div>
+          </li>
+          <li class="values__item">
+            <i class="fas fa-shield-alt" aria-hidden="true"></i>
+            <div>
+              <h3>Reliable</h3>
+              <p>I pay special attention to the stability of the server side.</p>
+            </div>
+          </li>
+          <li class="values__item">
+            <i class="fas fa-magic" aria-hidden="true"></i>
+            <div>
+              <h3>Dynamic</h3>
+              <p>Websites don't have to be static. I love bringing pages to life.</p>
+            </div>
+          </li>
+          <li class="values__item">
+            <i class="far fa-handshake" aria-hidden="true"></i>
+            <div>
+              <h3>Supportive</h3>
+              <p>I always aim for long-term relationships with clients.</p>
+            </div>
+          </li>
+        </ul>
       </div>
-      <div class="assurances__item">
-        <i class="fas fa-cogs anim_item"></i>
-        <h3>Dynamic</h3>
-        <p>Websites don't have to be static, I love making pages come to life.</p>
-      </div>
-      <div class="assurances__item">
-        <i class="far fa-handshake anim_item"></i>
-        <h3>Support</h3>
-        <p>I always try to build long-term relationships with clients</p>
+
+      <!-- Стек -->
+      <div class="card bento__stack reveal">
+        <span class="card__label">// tech stack</span>
+        <div class="stack">
+          <div class="stack__group">
+            <h3>Backend</h3>
+            <ul class="chips">
+              <li class="chip chip_hot">Python</li>
+              <li class="chip chip_hot">Django</li>
+              <li class="chip chip_hot">FastAPI</li>
+              <li class="chip">DRF</li>
+              <li class="chip">gRPC</li>
+              <li class="chip">Celery</li>
+              <li class="chip">Go</li>
+              <li class="chip">Playwright</li>
+            </ul>
+          </div>
+          <div class="stack__group">
+            <h3>Frontend</h3>
+            <ul class="chips">
+              <li class="chip chip_hot">JavaScript</li>
+              <li class="chip">React</li>
+              <li class="chip">HTML / SCSS</li>
+              <li class="chip">WebSocket</li>
+            </ul>
+          </div>
+          <div class="stack__group">
+            <h3>Data</h3>
+            <ul class="chips">
+              <li class="chip chip_hot">PostgreSQL</li>
+              <li class="chip">Redis</li>
+              <li class="chip">RabbitMQ</li>
+              <li class="chip">Elasticsearch</li>
+              <li class="chip">SQLite / PowerSync</li>
+            </ul>
+          </div>
+          <div class="stack__group">
+            <h3>DevOps</h3>
+            <ul class="chips">
+              <li class="chip chip_hot">Docker</li>
+              <li class="chip">Swarm</li>
+              <li class="chip">CI/CD</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="about_myself">
-      <div class="about_myself__desc">
-        <img src="img/myself/myself2.webp" alt="myself"
-              width="700"
-              height="600"
-              loading="lazy"
-              decoding="async"
-            />
-        <h3>WhoAmI?</h3>
-        <p>
-          Hi, I’m a senior web developer from Almaty with 9 years of experience.
-          Whether you're looking to enhance
-          an existing system or develop a brand-new project, I’m here to help
-          bring your ideas to life. I focus on writing clean, efficient code and
-          building scalable solutions. I enjoy working both independently and in
-          teams to deliver great results, and I'm currently open to new
-          freelance projects and full-time roles.
-        </p>
-        <a href="#contact">Let's make something special!</a>
-      </div>
-      <div class="about_myself__slills">
-        <div class="progress_bar" data-progress="90">
-          <div class="progress_bar__meta">
-            <span class="progress_bar__label">Python</span>
-          </div>
-          <div class="progress_bar__track">
-            <div id="PYTHON" class="progress_bar__fill"></div>
-          </div>
-        </div>
+  </div>
 
-        <div class="progress_bar" data-progress="95">
-          <div class="progress_bar__meta">
-            <span class="progress_bar__label">Django</span>
-          </div>
-          <div class="progress_bar__track">
-            <div id="DJANGO" class="progress_bar__fill"></div>
-          </div>
-        </div>
-
-        <div class="progress_bar" data-progress="92">
-          <div class="progress_bar__meta">
-            <span class="progress_bar__label">FastAPI</span>
-          </div>
-          <div class="progress_bar__track">
-            <div id="FASTAPI" class="progress_bar__fill"></div>
-          </div>
-        </div>
-
-        <div class="progress_bar" data-progress="95">
-          <div class="progress_bar__meta">
-            <span class="progress_bar__label">HTML / CSS</span>
-          </div>
-          <div class="progress_bar__track">
-            <div id="HTML" class="progress_bar__fill"></div>
-          </div>
-        </div>
-
-        <div class="progress_bar" data-progress="80">
-          <div class="progress_bar__meta">
-            <span class="progress_bar__label">Databases</span>
-          </div>
-          <div class="progress_bar__track">
-            <div id="CSS" class="progress_bar__fill"></div>
-          </div>
-        </div>
-
-        <div class="progress_bar" data-progress="80">
-          <div class="progress_bar__meta">
-            <span class="progress_bar__label">JavaScript</span>
-          </div>
-          <div class="progress_bar__track">
-            <div id="JavaScript" class="progress_bar__fill"></div>
-          </div>
-        </div>
-
-        <div class="progress_bar" data-progress="70">
-          <div class="progress_bar__meta">
-            <span class="progress_bar__label">React</span>
-          </div>
-          <div class="progress_bar__track">
-            <div id="REACT" class="progress_bar__fill"></div>
-          </div>
-        </div>
-
-        <div class="progress_bar" data-progress="60">
-          <div class="progress_bar__meta">
-            <span class="progress_bar__label">Go</span>
-          </div>
-          <div class="progress_bar__track">
-            <div id="GO" class="progress_bar__fill"></div>
-          </div>
-        </div>
-
-        <div class="progress_bar" data-progress="85">
-          <div class="progress_bar__meta">
-            <span class="progress_bar__label">Docker</span>
-          </div>
-          <div class="progress_bar__track">
-            <div id="DOCKER" class="progress_bar__fill"></div>
-          </div>
-        </div>
-
-        <div class="progress_bar" data-progress="65">
-          <div class="progress_bar__meta">
-            <span class="progress_bar__label">DevOps</span>
-          </div>
-          <div class="progress_bar__track">
-            <div id="DEVOPS" class="progress_bar__fill"></div>
-          </div>
-        </div>
-      </div>
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track">
+      <span>Python</span><span>Django</span><span>FastAPI</span><span>React</span><span>PostgreSQL</span><span>Docker</span><span>gRPC</span><span>Redis</span><span>Go</span><span>E2EE</span><span>Local-first</span><span>Arduino</span>
+      <span>Python</span><span>Django</span><span>FastAPI</span><span>React</span><span>PostgreSQL</span><span>Docker</span><span>gRPC</span><span>Redis</span><span>Go</span><span>E2EE</span><span>Local-first</span><span>Arduino</span>
     </div>
   </div>
 </section>

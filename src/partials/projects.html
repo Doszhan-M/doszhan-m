@@ -1,222 +1,327 @@
-<section id="projects" class="projects">
-  <div class="section-title">
-    <h2 class="section-title__title anim_item _animation">projects</h2>
-    <svg class="anim_item _animation" viewBox="0 0 100 5">
-      <line x1="0" y1="0" x2="100" y2="0" stroke="black" stroke-width="2" />
-    </svg>
-  </div>
-  <div class="projects__content">
-    <div class="projects__groupe big_anim_item _animation">
-      <div class="projects__item">
-        <img src="img/finsight/finsight.webp" alt="Finsight expense and budget tracker screenshot"
+<section id="projects" class="section projects">
+  <div class="section__inner">
+    <div class="section-head section-head_row reveal">
+      <div>
+        <span class="eyebrow"><span class="eyebrow__num">02</span> / projects</span>
+        <h2 class="section-head__title">Selected <em>work</em></h2>
+      </div>
+      <div class="filters" role="group" aria-label="Filter projects">
+        <button type="button" class="filters__btn is-active" data-filter="all" aria-pressed="true">All</button>
+        <button type="button" class="filters__btn" data-filter="product" aria-pressed="false">Products</button>
+        <button type="button" class="filters__btn" data-filter="automation" aria-pressed="false">Bots &amp; automation</button>
+        <button type="button" class="filters__btn" data-filter="hardware" aria-pressed="false">IoT &amp; pet projects</button>
+      </div>
+    </div>
+
+    <div class="projects__grid">
+      <article class="project card reveal project_featured" data-category="product">
+        <a href="#finsight" class="project__link" aria-label="Open case study: Finsight">
+          <div class="project__media">
+            <img src="img/finsight/finsight.webp" alt="Finsight expense and budget tracker screenshot"
               width="1800"
               height="1125"
               loading="lazy"
               decoding="async"
             />
-        <div class="projects__title projects__title_center">
-          <h3>
-            Finsight
-            <p>React/PowerSync/SQLite/Django/E2EE</p>
-          </h3>
-          <a href="#finsight">learn more</a>
-        </div>
-      </div>
-      <div class="projects__item">
-        <img src="img/goszakup_bot/goszakup_bot.webp" alt="Goszakup bot project screenshot"
+            <span class="project__num">01</span>
+          </div>
+          <div class="project__body">
+            <span class="project__role">Founder · Fullstack</span>
+            <h3 class="project__title">
+              Finsight
+              <i class="fas fa-arrow-right project__arrow" aria-hidden="true"></i>
+            </h3>
+            <p class="project__desc">Local-first finance app with end-to-end encryption. Built from the first idea to the first 1,000 users, shipped to web, Android, iOS and Windows.</p>
+            <ul class="chips chips_sm"><li class="chip">React</li><li class="chip">PowerSync</li><li class="chip">SQLite</li><li class="chip">Django</li><li class="chip">E2EE</li></ul>
+          </div>
+        </a>
+      </article>
+      <article class="project card reveal project_featured" data-category="automation">
+        <a href="#goszakup_bot" class="project__link" aria-label="Open case study: GosZakup Bot">
+          <div class="project__media">
+            <img src="img/goszakup_bot/goszakup_bot.webp" alt="Goszakup bot project screenshot"
               width="1792"
               height="1024"
               loading="lazy"
               decoding="async"
             />
-        <div class="projects__title projects__title_center">
-          <h3>
-            GosZakup Bot
-            <p>Python/Django/FastApi/GRPC</p>
-          </h3>
-          <a href="#goszakup_bot">learn more</a>
-        </div>
-      </div>
-      <div class="projects__item">
-        <img src="img/edo/edo.webp" alt="Uchet.EDO electronic document management service screenshot"
+            <span class="project__num">02</span>
+          </div>
+          <div class="project__body">
+            <span class="project__role">Freelance</span>
+            <h3 class="project__title">
+              GosZakup Bot
+              <i class="fas fa-arrow-right project__arrow" aria-hidden="true"></i>
+            </h3>
+            <p class="project__desc">Automates participation in government procurement tenders in Kazakhstan and cuts application time by 80%.</p>
+            <ul class="chips chips_sm"><li class="chip">Python</li><li class="chip">Django</li><li class="chip">FastAPI</li><li class="chip">gRPC</li></ul>
+          </div>
+        </a>
+      </article>
+      <article class="project card reveal" data-category="product">
+        <a href="#edo" class="project__link" aria-label="Open case study: Uchet.EDO">
+          <div class="project__media">
+            <img src="img/edo/edo.webp" alt="Uchet.EDO electronic document management service screenshot"
               width="1800"
               height="1125"
               loading="lazy"
               decoding="async"
             />
-        <div class="projects__title projects__title_center">
-          <h3>
-            Uchet.EDO
-            <p>Team Lead / Tech Lead</p>
-          </h3>
-          <a href="#edo">learn more</a>
-        </div>
-      </div>
-      <div class="projects__item">
-        <img src="img/pk/pk.webp" alt="Counterparty Verification service screenshot"
+            <span class="project__num">03</span>
+          </div>
+          <div class="project__body">
+            <span class="project__role">Team Lead · Tech Lead</span>
+            <h3 class="project__title">
+              Uchet.EDO
+              <i class="fas fa-arrow-right project__arrow" aria-hidden="true"></i>
+            </h3>
+            <p class="project__desc">Electronic document exchange used by 200,000+ companies, from small businesses to Wolt, Glovo and 2GIS.</p>
+            <ul class="chips chips_sm"><li class="chip">Leadership</li><li class="chip">Architecture</li><li class="chip">Reliability</li></ul>
+          </div>
+        </a>
+      </article>
+      <article class="project card reveal" data-category="product">
+        <a href="#pk" class="project__link" aria-label="Open case study: Counterparty Verification">
+          <div class="project__media">
+            <img src="img/pk/pk.webp" alt="Counterparty Verification service screenshot"
               width="1697"
               height="1093"
               loading="lazy"
               decoding="async"
             />
-        <div class="projects__title projects__title_center">
-          <h3>
-            Counterparty Verification
-            <p>DjangoES/Swarm/PG/Redis/RMQ/ES</p>
-          </h3>
-          <a href="#pk">learn more</a>
-        </div>
-      </div>
-      <div class="projects__item">
-        <img src="img/videohub/videohub8-min.webp" alt="Video hub platform screenshot"
+            <span class="project__num">04</span>
+          </div>
+          <div class="project__body">
+            <span class="project__role">Lead Developer</span>
+            <h3 class="project__title">
+              Counterparty Verification
+              <i class="fas fa-arrow-right project__arrow" aria-hidden="true"></i>
+            </h3>
+            <p class="project__desc">Checks companies against 25+ government sources with 99.9% uptime and 30% faster responses.</p>
+            <ul class="chips chips_sm"><li class="chip">Django</li><li class="chip">Swarm</li><li class="chip">PostgreSQL</li><li class="chip">Redis</li><li class="chip">RabbitMQ</li><li class="chip">Elasticsearch</li></ul>
+          </div>
+        </a>
+      </article>
+      <article class="project card reveal" data-category="product">
+        <a href="#videohub" class="project__link" aria-label="Open case study: VideoHub">
+          <div class="project__media">
+            <img src="img/videohub/videohub8-min.webp" alt="Video hub platform screenshot"
               width="1564"
               height="877"
               loading="lazy"
               decoding="async"
             />
-        <div class="projects__title projects__title_center">
-          <h3>
-            VideoHub
-            <p>Django/React/Websocket/Docker</p>
-          </h3>
-          <a href="#videohub">learn more</a>
-        </div>
-      </div>
-      <div class="projects__item">
-        <img src="img/fresh_cargo/fresh_cargo.webp" alt="Fresh Cargo Peru website screenshot"
+            <span class="project__num">05</span>
+          </div>
+          <div class="project__body">
+            <span class="project__role">Fullstack</span>
+            <h3 class="project__title">
+              VideoHub
+              <i class="fas fa-arrow-right project__arrow" aria-hidden="true"></i>
+            </h3>
+            <p class="project__desc">Video hosting with real-time chat for 500+ concurrent users and an FFmpeg pipeline that transcodes 80% faster.</p>
+            <ul class="chips chips_sm"><li class="chip">Django</li><li class="chip">React</li><li class="chip">WebSocket</li><li class="chip">Docker</li></ul>
+          </div>
+        </a>
+      </article>
+      <article class="project card reveal" data-category="product">
+        <a href="#fresh_cargo" class="project__link" aria-label="Open case study: Fresh Cargo Peru">
+          <div class="project__media">
+            <img src="img/fresh_cargo/fresh_cargo.webp" alt="Fresh Cargo Peru website screenshot"
               width="1600"
               height="932"
               loading="lazy"
               decoding="async"
             />
-        <div class="projects__title projects__title_center">
-          <h3>
-            Fresh Cargo Peru
-            <p>Python/Django/JS/Bootstrap</p>
-          </h3>
-          <a href="#fresh_cargo">learn more</a>
-        </div>
-      </div>
-      <div class="projects__item">
-        <img src="img/dogovor24/dogovor24.webp" alt="Parser for dogovor24 project screenshot"
+            <span class="project__num">06</span>
+          </div>
+          <div class="project__body">
+            <span class="project__role">Support · Development</span>
+            <h3 class="project__title">
+              Fresh Cargo Peru
+              <i class="fas fa-arrow-right project__arrow" aria-hidden="true"></i>
+            </h3>
+            <p class="project__desc">Cargo and logistics platform used daily by clients in Peru. Bug fixes, new features and performance work.</p>
+            <ul class="chips chips_sm"><li class="chip">Python</li><li class="chip">Django</li><li class="chip">JavaScript</li><li class="chip">Bootstrap</li></ul>
+          </div>
+        </a>
+      </article>
+      <article class="project card reveal" data-category="automation">
+        <a href="#dogovor24" class="project__link" aria-label="Open case study: Parser for Dogovor24">
+          <div class="project__media">
+            <img src="img/dogovor24/dogovor24.webp" alt="Parser for dogovor24 project screenshot"
               width="1024"
               height="1024"
               loading="lazy"
               decoding="async"
             />
-        <div class="projects__title projects__title_center">
-          <h3>
-            Parser for Dogovor24
-            <p>Python/Playwright</p>
-          </h3>
-          <a href="#dogovor24">learn more</a>
-        </div>
-      </div>
-      <div class="projects__item">
-        <img src="img/websocket/websocket.webp" alt="WebSocket chat project screenshot"
+            <span class="project__num">07</span>
+          </div>
+          <div class="project__body">
+            <span class="project__role">Automation</span>
+            <h3 class="project__title">
+              Parser for Dogovor24
+              <i class="fas fa-arrow-right project__arrow" aria-hidden="true"></i>
+            </h3>
+            <p class="project__desc">Asynchronous parser for legal documents, 50% faster than classic scraping, with concurrent tasks.</p>
+            <ul class="chips chips_sm"><li class="chip">Python</li><li class="chip">Playwright</li><li class="chip">asyncio</li></ul>
+          </div>
+        </a>
+      </article>
+      <article class="project card reveal" data-category="automation">
+        <a href="#websocket_chat" class="project__link" aria-label="Open case study: WebSocket Chat">
+          <div class="project__media">
+            <img src="img/websocket/websocket.webp" alt="WebSocket chat project screenshot"
               width="1540"
               height="1024"
               loading="lazy"
               decoding="async"
             />
-        <div class="projects__title projects__title_center">
-          <h3>
-            WebSocket Chat
-            <p>DRF/JavaScript/Ajax</p>
-          </h3>
-          <a href="#websocket_chat">learn more</a>
-        </div>
-      </div>
-      <div class="projects__item">
-        <img src="img/reportbot/reportbot.webp" alt="Telegram report bot project screenshot"
+            <span class="project__num">08</span>
+          </div>
+          <div class="project__body">
+            <span class="project__role">Freelance demo</span>
+            <h3 class="project__title">
+              WebSocket Chat
+              <i class="fas fa-arrow-right project__arrow" aria-hidden="true"></i>
+            </h3>
+            <p class="project__desc">Public rooms, private messages and group chats built on Django Channels.</p>
+            <ul class="chips chips_sm"><li class="chip">DRF</li><li class="chip">Channels</li><li class="chip">JavaScript</li></ul>
+          </div>
+        </a>
+      </article>
+      <article class="project card reveal" data-category="automation">
+        <a href="#reportbot" class="project__link" aria-label="Open case study: Telegram Report Bot">
+          <div class="project__media">
+            <img src="img/reportbot/reportbot.webp" alt="Telegram report bot project screenshot"
               width="1288"
               height="754"
               loading="lazy"
               decoding="async"
             />
-        <div class="projects__title projects__title_center">
-          <h3>
-            Telegram Report Bot
-            <p>Django/pyTelegramBotAPI</p>
-          </h3>
-          <a href="#reportbot">learn more</a>
-        </div>
-      </div>
-      <div class="projects__item">
-        <img src="img/slackbot/slacbot.webp" alt="Parser Slackbot project screenshot"
+            <span class="project__num">09</span>
+          </div>
+          <div class="project__body">
+            <span class="project__role">Freelance</span>
+            <h3 class="project__title">
+              Telegram Report Bot
+              <i class="fas fa-arrow-right project__arrow" aria-hidden="true"></i>
+            </h3>
+            <p class="project__desc">Telegram bot that tracks loans and shared expenses between two people.</p>
+            <ul class="chips chips_sm"><li class="chip">Django</li><li class="chip">pyTelegramBotAPI</li></ul>
+          </div>
+        </a>
+      </article>
+      <article class="project card reveal" data-category="automation">
+        <a href="#slackbot" class="project__link" aria-label="Open case study: Parser SlackBot">
+          <div class="project__media">
+            <img src="img/slackbot/slacbot.webp" alt="Parser Slackbot project screenshot"
               width="1444"
               height="988"
               loading="lazy"
               decoding="async"
             />
-        <div class="projects__title projects__title_center">
-          <h3>
-            Parser SlackBot
-            <p>Python/Django</p>
-          </h3>
-          <a href="#slackbot">learn more</a>
-        </div>
-      </div>
-      <div class="projects__item">
-        <img src="img/trashcan/trashcan.webp" alt="Automatic trash bin project photo"
+            <span class="project__num">10</span>
+          </div>
+          <div class="project__body">
+            <span class="project__role">Hackathon</span>
+            <h3 class="project__title">
+              Parser SlackBot
+              <i class="fas fa-arrow-right project__arrow" aria-hidden="true"></i>
+            </h3>
+            <p class="project__desc">Watches websites for new posts and notifies Slack channels. Built at a SkillFactory hackathon.</p>
+            <ul class="chips chips_sm"><li class="chip">Python</li><li class="chip">Django</li><li class="chip">Slack API</li></ul>
+          </div>
+        </a>
+      </article>
+      <article class="project card reveal" data-category="hardware">
+        <a href="#trashcan" class="project__link" aria-label="Open case study: Automatic Trash Bin">
+          <div class="project__media">
+            <img src="img/trashcan/trashcan.webp" alt="Automatic trash bin project photo"
               width="1024"
               height="742"
               loading="lazy"
               decoding="async"
             />
-        <div class="projects__title projects__title_center">
-          <h3>
-            Automatic Trash Bin
-            <p>Arduino C</p>
-          </h3>
-          <a href="#trashcan">learn more</a>
-        </div>
-      </div>
-      <div class="projects__item">
-        <img src="img/temp_control/temp_control.webp" alt="Home temperature control device photo"
+            <span class="project__num">11</span>
+          </div>
+          <div class="project__body">
+            <span class="project__role">DIY · Hardware</span>
+            <h3 class="project__title">
+              Automatic Trash Bin
+              <i class="fas fa-arrow-right project__arrow" aria-hidden="true"></i>
+            </h3>
+            <p class="project__desc">Motion-activated bin on Arduino Uno and a servo motor. It ran in my home for two years.</p>
+            <ul class="chips chips_sm"><li class="chip">Arduino</li><li class="chip">C</li></ul>
+          </div>
+        </a>
+      </article>
+      <article class="project card reveal" data-category="hardware">
+        <a href="#temp_control" class="project__link" aria-label="Open case study: Home Temp Control">
+          <div class="project__media">
+            <img src="img/temp_control/temp_control.webp" alt="Home temperature control device photo"
               width="1024"
               height="1024"
               loading="lazy"
               decoding="async"
             />
-        <div class="projects__title projects__title_center">
-          <h3>
-            Home Temp Control
-            <p>Arduino C</p>
-          </h3>
-          <a href="#temp_control">learn more</a>
-        </div>
-      </div>
-      <div class="projects__item">
-        <img src="img/seabattle/seabattle.webp" alt="Sea battle game screenshot"
+            <span class="project__num">12</span>
+          </div>
+          <div class="project__body">
+            <span class="project__role">DIY · IoT</span>
+            <h3 class="project__title">
+              Home Temp Control
+              <i class="fas fa-arrow-right project__arrow" aria-hidden="true"></i>
+            </h3>
+            <p class="project__desc">Smart-home thermal control on ESP8266 with a web UI, an OLED display and a physical switch.</p>
+            <ul class="chips chips_sm"><li class="chip">ESP8266</li><li class="chip">C</li><li class="chip">IoT</li></ul>
+          </div>
+        </a>
+      </article>
+      <article class="project card reveal" data-category="hardware">
+        <a href="#seabattle" class="project__link" aria-label="Open case study: Sea Battle">
+          <div class="project__media">
+            <img src="img/seabattle/seabattle.webp" alt="Sea battle game screenshot"
               width="1600"
               height="1156"
               loading="lazy"
               decoding="async"
             />
-        <div class="projects__title projects__title_center">
-          <h3>
-            Sea Battle
-            <p>Python</p>
-          </h3>
-          <a href="#seabattle">learn more</a>
-        </div>
-      </div>
-      <div class="projects__item">
-        <img src="img/weather_app/weather_app.webp" alt="Weather app screenshot"
+            <span class="project__num">13</span>
+          </div>
+          <div class="project__body">
+            <span class="project__role">Pet project</span>
+            <h3 class="project__title">
+              Sea Battle
+              <i class="fas fa-arrow-right project__arrow" aria-hidden="true"></i>
+            </h3>
+            <p class="project__desc">Console version of the classic board game, built to practise clean OOP design.</p>
+            <ul class="chips chips_sm"><li class="chip">Python</li><li class="chip">OOP</li></ul>
+          </div>
+        </a>
+      </article>
+      <article class="project card reveal" data-category="hardware">
+        <a href="#weather_app" class="project__link" aria-label="Open case study: Weather App">
+          <div class="project__media">
+            <img src="img/weather_app/weather_app.webp" alt="Weather app screenshot"
               width="1200"
               height="800"
               loading="lazy"
               decoding="async"
             />
-        <div class="projects__title projects__title_center">
-          <h3>
-            Weather App
-            <p>React</p>
-          </h3>
-          <a href="#weather_app">learn more</a>
-        </div>
-      </div>
+            <span class="project__num">14</span>
+          </div>
+          <div class="project__body">
+            <span class="project__role">Pet project</span>
+            <h3 class="project__title">
+              Weather App
+              <i class="fas fa-arrow-right project__arrow" aria-hidden="true"></i>
+            </h3>
+            <p class="project__desc">Weather forecast app with light and dark themes, geolocation and city search.</p>
+            <ul class="chips chips_sm"><li class="chip">React</li><li class="chip">REST API</li></ul>
+          </div>
+        </a>
+      </article>
     </div>
   </div>
 </section>

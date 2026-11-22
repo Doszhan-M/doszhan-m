@@ -4,13 +4,6 @@ import { startPreloader } from "./preloader";
 export function index() {
   const preloader = startPreloader();
 
-  $(window).ready(function () {
-    // шаг вниз перед загрузкой и показа preloader
-    $("html, body").animate({ scrollTop: $("#about").offset().top }, 200);
-    $("html, body").animate({ scrollTop: $("#projects").offset().top }, 200);
-    $("html, body").animate({ scrollTop: $("#preview").offset().top }, 10);
-  });
-
   // Preloader
   $(window).on("load", function () {
     heroReady
@@ -54,63 +47,21 @@ export function index() {
     $(".header__burger").attr("aria-expanded", "false");
   });
 
-  // Анимация при достижении блока в зону видимости
-  var windowHeight = $(window).height();
-  function animation() {
-    $(".anim_item").each(function () {
-      var self = $(this),
-        height = self.offset().top + self.height();
-      if ($(document).scrollTop() + windowHeight >= height) {
-        self.addClass("_animation");
-      }
-      if ($(document).scrollTop() + windowHeight <= height - 300) {
-        self.removeClass("_animation");
-      }
-    });
-  }
+  // подсветка активного пункта меню при скролле
+  $(document).on("scroll", headerColor);
 
-  // Определить устройство, если телефон, то true
-  function isMobile() {
-    if (
-      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-        navigator.userAgent
-      )
-    ) {
-      return true;
+  // Esc закрывает мобильное меню
+  $(document).on("keydown", function (event) {
+    if (event.key === "Escape" && $(".header").hasClass("active")) {
+      $(".header__moblil_close").first().trigger("click");
     }
-    return false;
-  }
-
-  // Анимация при достижении блока в зону видимости для больших объектов
-  function animationBigItem() {
-    $(".big_anim_item").each(function () {
-      let self = $(this);
-
-      if (isMobile()) {
-        var height = self.offset().top - 400;
-      } else {
-        var height = self.offset().top - 700;
-      }
-
-      if ($(document).scrollTop() >= height) {
-        self.addClass("_fade-in");
-      }
-      if ($(document).scrollTop() < 200) {
-        self.removeClass("_fade-in");
-      }
-    });
-  }
-  // запустить функции для скрола
-  $(document).on("scroll", function () {
-    animation();
-    animationBigItem();
-    headerColor();
   });
 
   // Фиксация navbar после скрола
   jQuery(window).scroll(function navBar() {
     var the_top = jQuery(document).scrollTop();
-    if (the_top > 500) {
+    // шапка появляется, когда первый экран почти прокручен
+    if (the_top > window.innerHeight * 0.6) {
       jQuery(".header").addClass("fixed");
     } else {
       jQuery(".header").removeClass("fixed");
@@ -119,7 +70,7 @@ export function index() {
 
   // при достижении одной секции из header на экран, та секция меняет цвет
   function headerColor() {
-    $(".header__moblil_close").each(function () {
+    $(".header__link").each(function () {
       let self = $(this);
       let id = self.attr("href");
       let section = $(id);

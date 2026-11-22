@@ -5,16 +5,17 @@ const sendForm = async (message, bot) => {
   const token = bot.token;
   const chat_id = bot.chat_id;
   return await fetch(
-    `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chat_id}&text=${message}`
+    `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chat_id}&text=${encodeURIComponent(message)}`
   )
     .then((response) => {
       return response.json();
     })
     .then((data) => {
-      return data.ok;
+      return data.ok === true;
     })
-    .catch((error) => {
-      return error;
+    .catch(() => {
+      // сетевая ошибка — не считаем отправку успешной
+      return false;
     });
 };
 
@@ -37,8 +38,12 @@ export function sendContactForm() {
       email.value.length > 0 &&
       message.value.length > 0
     ) {
-      const data = `Name: ${name.value}%0A${email.value}%0A${message.value}`;
+      const data = `Name: ${name.value}\n${email.value}\n${message.value}`;
+      btn.classList.add("is-loading");
+      btn.disabled = true;
       const result = await sendForm(data, bot);
+      btn.classList.remove("is-loading");
+      btn.disabled = false;
 
       if (result) {
         if (userErrorAlert.classList.contains("alert")) {
@@ -58,6 +63,8 @@ export function sendContactForm() {
         systemErrorAlert.classList.add("alert");
       }
     } else {
+      successAlert.classList.remove("alert");
+      systemErrorAlert.classList.remove("alert");
       userErrorAlert.classList.add("alert");
     }
   });

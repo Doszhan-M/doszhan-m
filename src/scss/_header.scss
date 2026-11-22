@@ -1,181 +1,248 @@
-@font-face {
-  font-family: "Raleway";
-  font-weight: 400;
-  src: url("../fonts/ralewaymediumitalic.ttf") format("truetype");
-}
-@font-face {
-  font-family: "OxinWar";
-  font-weight: 400;
-  src: url("../fonts/OxinWar-oEJA.ttf") format("truetype");
-}
-@font-face {
-  font-family: "Punishment";
-  font-weight: 400;
-  src: url("../fonts/Punishment.otf") format("truetype");
-}
-
-html {
-  height: 100%;
-}
-
-body {
-  height: 100%;
-  font-size: 14px;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-}
-
-// _________________________________________________________________
+// Шапка скрыта на первом экране и выезжает плавающей «капсулой»
+// после прокрутки (класс .fixed ставит index.js).
 .header {
   position: fixed;
-  left: 0;
-  top: 0;
+  top: 14px;
+  left: 50%;
+  z-index: 20;
+  width: min(960px, calc(100% - 24px));
   opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -24px);
+  transition:
+    opacity 0.45s var(--ease),
+    transform 0.45s var(--ease);
 
   &.fixed {
-    display: block;
     opacity: 1;
-    transition: all 0.4s ease 0s;
-    min-width: 100%;
-    height: 47px;
-    background-color: rgb(12, 247, 247);
-    z-index: 1;
-    overflow: auto;
-    overflow-y: hidden;
+    pointer-events: auto;
+    transform: translate(-50%, 0);
+  }
+}
 
-    &.active {
-      height: 100vh;
-    }
+.header__body {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  height: 60px;
+  padding: 0 10px 0 22px;
+  background: rgba(10, 13, 18, 0.62);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  backdrop-filter: blur(18px) saturate(160%);
+  box-shadow: 0 20px 50px -20px rgba(0, 0, 0, 0.8);
+}
+
+.header__logo {
+  position: relative;
+  z-index: 2;
+  font-family: var(--font);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: var(--text);
+  text-decoration: none;
+
+  span {
+    color: var(--accent);
+  }
+}
+
+.header__nav {
+  margin: 0 auto;
+}
+
+.header__titles {
+  display: flex;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.header__link {
+  display: block;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: capitalize;
+  text-decoration: none;
+  color: var(--muted);
+  border-radius: 999px;
+  transition:
+    color 0.25s ease,
+    background-color 0.25s ease;
+
+  &:hover {
+    color: var(--text);
   }
 
+  &.header_active {
+    color: var(--text);
+    background: var(--surface-2);
+  }
+}
+
+.header__cta {
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  color: #001314;
+  background: var(--accent);
+  border-radius: 999px;
+  transition:
+    box-shadow 0.3s var(--ease),
+    transform 0.3s var(--ease);
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 30px -6px rgba(17, 217, 224, 0.7);
+  }
+}
+
+.header__burger {
+  display: none;
+}
+
+// ─── Mobile ─────────────────────────────────────────────────────────
+@media screen and (max-width: 812px) {
   .header__body {
+    height: 54px;
+    padding: 0 16px 0 20px;
+    justify-content: space-between;
+  }
+
+  .header__cta {
+    display: none;
+  }
+
+  .header__nav {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
     display: flex;
     align-items: center;
-    justify-self: baseline;
-    width: 100%;
-    height: 44px;
-    background-color: rgb(37, 51, 63);
-    z-index: 20;
+    justify-content: center;
+    margin: 0;
+    background: rgba(5, 7, 10, 0.96);
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      opacity 0.4s var(--ease),
+      visibility 0.4s;
+  }
 
-    .header__burger {
-      display: none;
+  // меню растягивается на весь экран, поэтому у капсулы снимаем трансформацию
+  // (иначе fixed-потомок позиционируется относительно неё, а не окна)
+  .header.active {
+    transform: none;
+    left: 12px;
 
-      @media screen and (max-width: 812px) {
-        & {
-          margin-left: 85%;
-          display: block;
-          position: relative;
-          width: 30px;
-          height: 20px;
-
-          &::before,
-          &::after {
-            content: "";
-            background-color: white;
-            position: absolute;
-            width: 100%;
-            height: 2px;
-            left: 0;
-            transition: all 0.3s ease;
-          }
-
-          & span {
-            position: absolute;
-            background-color: white;
-            position: absolute;
-            width: 100%;
-            height: 2px;
-            left: 0;
-            top: 9px;
-          }
-
-          &::before {
-            top: 0;
-          }
-
-          &::after {
-            bottom: 0;
-          }
-
-          &.active::before {
-            transform: rotate(45deg);
-            top: 9px;
-          }
-
-          &.active::after {
-            transform: rotate(-45deg);
-            bottom: 9px;
-          }
-
-          &.active span {
-            transform: scale(-0);
-          }
-        }
-      }
+    // backdrop-filter тоже создаёт containing block для fixed — снимаем на время открытого меню
+    .header__body {
+      -webkit-backdrop-filter: none;
+      backdrop-filter: none;
+      background: transparent;
+      border-color: transparent;
+      box-shadow: none;
     }
 
     .header__nav {
-      .header__titles {
-        display: flex;
-        justify-content: baseline;
+      opacity: 1;
+      visibility: visible;
+    }
+  }
 
-        @media screen and (max-width: 812px) {
-          & {
-            opacity: 0;
-            position: absolute;
-            z-index: -50;
-            top: -150px;
-            transition: opacity 0.5s ease 0s;
-          }
-          &.active {
-            opacity: 1;
-            position: absolute;
-            top: 45%;
-            left: 45%;
-            margin-top: 10%;
-            transform: translate(-50%, -45%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            transition: opacity 0.5s ease 0s;
-          }
+  .header__titles {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+
+    li {
+      opacity: 0;
+      transform: translateY(16px);
+      transition:
+        opacity 0.4s var(--ease),
+        transform 0.4s var(--ease);
+    }
+
+    &.active li {
+      opacity: 1;
+      transform: none;
+
+      @for $i from 1 through 4 {
+        &:nth-child(#{$i}) {
+          transition-delay: #{0.05 + $i * 0.05}s;
         }
+      }
+    }
+  }
 
-        & li {
-          list-style: none;
-          margin-left: 30px;
+  .header__link {
+    font-size: 40px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    padding: 6px 24px;
 
-          @media screen and (max-width: 812px) {
-            & {
-              margin: 0 0 10% 0;
-            }
-          }
-        }
-        & a {
-          color: white;
-          text-decoration: none;
-          text-transform: uppercase;
-          font-size: 20px;
-          font-family: Arial, Helvetica, sans-serif;
-          margin-left: 4%;
+    &.header_active {
+      background: none;
+      color: var(--accent);
+    }
+  }
 
-          &.header_active,
-          &:hover {
-            color: #e31b6d;
-          }
+  .header__burger {
+    position: relative;
+    z-index: 2;
+    display: block;
+    width: 26px;
+    height: 18px;
+    cursor: pointer;
 
-          @media screen and (max-width: 812px) {
-            & {
-              font-family: "OxinWar", Arial, sans-serif;
-              text-transform: none;
-              font-size: 40px;
-              margin: 0;
-            }
-          }
-        }
+    &::before,
+    &::after,
+    span {
+      content: "";
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      border-radius: 2px;
+      background: var(--text);
+      transition:
+        transform 0.3s var(--ease),
+        top 0.3s var(--ease),
+        bottom 0.3s var(--ease);
+    }
+
+    &::before {
+      top: 0;
+    }
+
+    span {
+      top: 8px;
+    }
+
+    &::after {
+      bottom: 0;
+    }
+
+    &.active {
+      &::before {
+        top: 8px;
+        transform: rotate(45deg);
+      }
+
+      &::after {
+        bottom: 8px;
+        transform: rotate(-45deg);
+      }
+
+      span {
+        transform: scaleX(0);
       }
     }
   }
