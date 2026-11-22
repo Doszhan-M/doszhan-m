@@ -1,98 +1,115 @@
 import { heroReady } from "./video_loader";
 import { startPreloader } from "./preloader";
 
+const SECTIONS = ["preview", "about", "projects", "contact"];
+
+function pageLoaded() {
+  return document.readyState === "complete"
+    ? Promise.resolve()
+    : new Promise((resolve) =>
+        window.addEventListener("load", resolve, { once: true })
+      );
+}
+
 export function index() {
   const preloader = startPreloader();
 
-  // Preloader
-  $(window).on("load", function () {
-    heroReady
-      .then(function () {
-        return preloader.finish();
-      })
-      .then(function () {
-        preloader.hide();
-      });
-  });
+  // Прелоадер уходит, когда загружена страница и готов первый экран (робот или видео)
+  pageLoaded()
+    .then(() => heroReady)
+    .then(() => preloader.finish())
+    .then(() => preloader.hide());
 
-  // Плавный scroll до секции
-  let sections = ["preview", "about", "projects", "contact"]; // список id ссылок, где нужен e.preventDefault();
-  sections.forEach((element) => {
-    $(`a[href*="#${element}"]`).on("click", function (e) {
-      e.preventDefault();
-      $("html, body").animate(
-        {
-          scrollTop: $($(this).attr("href")).offset().top,
-        },
-        500
-      );
-    });
-  });
+  const header = document.querySelector(".header");
+  const burger = document.querySelector(".header__burger");
+  const titles = document.querySelector(".header__titles");
+  const navLinks = document.querySelectorAll(".header__link");
 
-  // нажатие на бургер открывает меню
-  $(".header__burger").click(function (event) {
-    $("header, .header__burger, .header__titles").toggleClass("active");
-    $(this).attr("aria-expanded", $(this).hasClass("active"));
-  });
-  // бургер доступен с клавиатуры
-  $(".header__burger").on("keydown", function (event) {
-    if (event.key === "Enter" || event.key === " ") {
-      event.preventDefault();
-      $(this).click();
+  // Плавная прокрутка до секции (ссылки на попапы по-прежнему работают через хеш)
+  document.addEventListener("click", (event) => {
+    const link = event.target.closest && event.target.closest('a[href^="#"]');
+    if (!link) {
+      return;
     }
-  });
-  // нажатие на ссылку в меню бургера закрывает меню
-  $(".header__moblil_close").click(function (event) {
-    $("header, .header__burger, .header__titles").removeClass("active");
-    $(".header__burger").attr("aria-expanded", "false");
-  });
-
-  // подсветка активного пункта меню при скролле
-  $(document).on("scroll", headerColor);
-
-  // Esc закрывает мобильное меню
-  $(document).on("keydown", function (event) {
-    if (event.key === "Escape" && $(".header").hasClass("active")) {
-      $(".header__moblil_close").first().trigger("click");
+    const id = link.getAttribute("href").slice(1);
+    if (!SECTIONS.includes(id)) {
+      return;
     }
-  });
-
-  // Фиксация navbar после скрола
-  jQuery(window).scroll(function navBar() {
-    var the_top = jQuery(document).scrollTop();
-    // шапка появляется, когда первый экран почти прокручен
-    if (the_top > window.innerHeight * 0.6) {
-      jQuery(".header").addClass("fixed");
-    } else {
-      jQuery(".header").removeClass("fixed");
+    const section = document.getElementById(id);
+    if (!section) {
+      return;
     }
+    event.preventDefault();
+    section.scrollIntoView({ behavior: "smooth", block: "start" });
   });
 
-  // при достижении одной секции из header на экран, та секция меняет цвет
-  function headerColor() {
-    $(".header__link").each(function () {
-      let self = $(this);
-      let id = self.attr("href");
-      let section = $(id);
-      let sectionOffsetHeight = section.offset().top; // расстояние от секции до начало страницы
-      let sectionAndOfsetHeight = sectionOffsetHeight + section.height();
-      let documentScrollTop = $(document).scrollTop() + 10; // расстояние от текущего место до начало документа
+  // Мобильное меню
+  function setMenu(open) {
+    [header, burger, titles].forEach((el) => el && el.classList.toggle("active", open));
+    if (burger) {
+      burger.setAttribute("aria-expanded", String(open));
+    }
+  }
 
-      if (
-        sectionOffsetHeight <= documentScrollTop &&
-        documentScrollTop <= sectionAndOfsetHeight
-      ) {
-        self.addClass("header_active");
-      } else {
-        self.removeClass("header_active");
+  if (burger) {
+    burger.addEventListener("click", () => setMenu(!burger.classList.contains("active")));
+    burger.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        burger.click();
       }
     });
   }
-
-  // показывать текущий год в footer
-  document.addEventListener("DOMContentLoaded", () => {
-    const yearElement = document.getElementById("currentYear");
-    const currentYear = new Date().getFullYear();
-    yearElement.textContent = `©2018-${currentYear}`;
+  // нажатие на ссылку в меню закрывает меню
+  document.querySelectorAll(".header__moblil_close").forEach((link) => {
+    link.addEventListener("click", () => setMenu(false));
   });
+  // Esc закрывает мобильное меню
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && header && header.classList.contains("active")) {
+      setMenu(false);
+    }
+  });
+
+  // Шапка появляется, когда первый экран почти прокручен,
+  // и подсвечивает пункт меню текущей секции
+  function onScroll() {
+    const top = window.scrollY;
+    if (header) {
+      header.classList.toggle("fixed", top > window.innerHeight * 0.6);
+    }
+    const probe = top + 10;
+    navLinks.forEach((link) => {
+      const section = document.getElementById(link.getAttribute("href").slice(1));
+      if (!section) {
+        return;
+      }
+      const start = section.offsetTop;
+      const end = start + section.offsetHeight;
+      link.classList.toggle("header_active", start <= probe && probe <= end);
+    });
+  }
+
+  let ticking = false;
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (ticking) {
+        return;
+      }
+      ticking = true;
+      requestAnimationFrame(() => {
+        onScroll();
+        ticking = false;
+      });
+    },
+    { passive: true }
+  );
+  onScroll();
+
+  // Текущий год в подвале
+  const yearElement = document.getElementById("currentYear");
+  if (yearElement) {
+    yearElement.textContent = `©2018-${new Date().getFullYear()}`;
+  }
 }
