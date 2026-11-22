@@ -135,3 +135,7 @@ dmypy.json
 .pyre/
 # исходники фото (тяжёлые, с EXIF/GPS) — не публикуем
 originals/
+
+# Claude Code: локальные настройки и временные файлы проверок
+.claude/settings.local.json
+.claude/scratch/

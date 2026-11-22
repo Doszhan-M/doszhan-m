@@ -1,0 +1,68 @@
+<!doctype html>
+<!-- Шаблон картинки для превью в соцсетях (1200×630). Отрисовка: node scripts/og/render.js -->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=block" />
+<style>
+  :root { --accent:#11d9e0; --accent-2:#7c5cff; --text:#e8edf2; --muted:#8b96a3; --dim:#5a6470; }
+  * { box-sizing:border-box; margin:0; }
+  html, body { width:1200px; height:630px; background:#05070a; overflow:hidden; }
+  body {
+    position:relative; font-family:"Space Grotesk",system-ui,sans-serif; color:var(--text);
+    background:
+      radial-gradient(ellipse 55% 70% at 85% 45%, rgba(17,217,224,.16), transparent 70%),
+      radial-gradient(ellipse 50% 60% at 10% 110%, rgba(124,92,255,.14), transparent 70%),
+      #05070a;
+  }
+  .grid { position:absolute; inset:0;
+    background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+    background-size:48px 48px;
+    -webkit-mask-image:radial-gradient(ellipse 80% 80% at 40% 40%,#000 30%,transparent 100%); }
+  .wrap { position:absolute; inset:0; display:flex; padding:64px 0 56px 72px; gap:48px; }
+  .left { flex:1; display:flex; flex-direction:column; }
+  .logo { font-size:30px; font-weight:700; letter-spacing:-.04em; }
+  .logo span { color:var(--accent); }
+  .eyebrow { margin-top:46px; display:flex; align-items:center; gap:12px; font:500 17px "JetBrains Mono",monospace;
+    letter-spacing:.08em; text-transform:uppercase; color:var(--muted); }
+  .eyebrow::before { content:""; width:34px; height:2px; background:var(--accent); }
+  h1 { margin-top:18px; font-size:76px; line-height:.98; font-weight:600; letter-spacing:-.045em; }
+  h1 em { font-style:normal; background:linear-gradient(100deg,var(--accent),#8af7ff 50%,var(--accent-2));
+    -webkit-background-clip:text; color:transparent; }
+  .lead { margin-top:22px; font-size:24px; line-height:1.4; color:var(--muted); max-width:600px; }
+  .chips { margin-top:auto; display:flex; flex-wrap:wrap; gap:10px; }
+  .chip { padding:8px 16px; font:500 17px "JetBrains Mono",monospace; border-radius:999px;
+    background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.1); }
+  .chip.hot { color:var(--accent); background:rgba(17,217,224,.12); border-color:rgba(17,217,224,.3); }
+  .right { position:relative; width:380px; flex:none; }
+  .photo { position:absolute; top:-64px; right:0; bottom:-56px; left:-90px; overflow:hidden;
+    -webkit-mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.55) 22%,#000 48%); }
+  .photo img { width:100%; height:100%; object-fit:cover; object-position:center 20%; }
+  .status { position:absolute; left:-36px; bottom:40px; display:flex; align-items:center; gap:12px; padding:12px 20px;
+    font-size:19px; font-weight:500; color:#b8f5d4; background:rgba(8,20,14,.85); border:1px solid rgba(19,190,62,.4);
+    border-radius:999px; backdrop-filter:blur(8px); }
+  .status i { width:10px; height:10px; border-radius:50%; background:#22d35a; box-shadow:0 0 0 6px rgba(34,211,90,.2); }
+  .url { position:absolute; left:72px; bottom:20px; font:400 15px "JetBrains Mono",monospace; color:var(--dim); letter-spacing:.04em; }
+</style>
+</head>
+<body>
+  <div class="grid"></div>
+  <div class="wrap">
+    <div class="left">
+      <div class="logo">DM<span>.</span></div>
+      <div class="eyebrow">Senior Fullstack · 9+ years</div>
+      <h1>Doszhan<br /><em>Mengaliyev</em></h1>
+      <p class="lead">I build products that are fast,<br />reliable and ready to scale.</p>
+      <div class="chips">
+        <span class="chip hot">Python</span><span class="chip hot">Django</span><span class="chip hot">FastAPI</span>
+        <span class="chip">React</span><span class="chip">PostgreSQL</span><span class="chip">Docker</span>
+      </div>
+    </div>
+    <div class="right">
+      <div class="photo"><img src="../../src/img/myself/myself-portrait.webp" alt="" /></div>
+      <div class="status"><i></i>Open to new projects</div>
+    </div>
+  </div>
+  <div class="url">doszhan-m.netlify.app</div>
+</body>
+</html>
