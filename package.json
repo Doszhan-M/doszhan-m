@@ -21,7 +21,8 @@
     "dev": "webpack serve --mode development",
     "build": "webpack --mode production",
     "check": "node scripts/browser/check.js",
-    "og": "node scripts/og/render.js"
+    "og": "node scripts/og/render.js",
+    "perf": "node scripts/browser/perf.js"
   },
   "browserslist": {
     "production": [

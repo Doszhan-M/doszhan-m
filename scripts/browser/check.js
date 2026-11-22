@@ -7,52 +7,15 @@
 // фильтры проектов, горизонтальную прокрутку. Скриншоты — в .claude/scratch/browser/shots/.
 // Код выхода 1, если хоть одна проверка не прошла.
 //
-// Зависимости не ставятся: Playwright берётся из кэша npx (~/.npm/_npx/*/node_modules),
-// браузер — системный Google Chrome. Если кэша нет: `npx -y playwright@1.62.1 --version`.
+// Playwright и статический сервер — из ./lib.js (без новых зависимостей).
 // Spline, Метрика и видео в проверке заблокированы (сеть и WebGL здесь не нужны), поэтому
 // hero ждёт свой тайм-аут ~10 с — это ожидаемо.
 "use strict";
 const fs = require("fs");
 const path = require("path");
-const os = require("os");
-const http = require("http");
+const { SHOTS, requirePlaywright, serveDist } = require("./lib");
 
-function requirePlaywright() {
-  try {
-    return require("playwright");
-  } catch {}
-  const npx = path.join(os.homedir(), ".npm", "_npx");
-  for (const d of fs.existsSync(npx) ? fs.readdirSync(npx) : []) {
-    const p = path.join(npx, d, "node_modules", "playwright");
-    if (fs.existsSync(p)) return require(p);
-  }
-  throw new Error("Playwright не найден: npx -y playwright@1.62.1 --version");
-}
 const { chromium } = requirePlaywright();
-
-const ROOT = path.resolve(__dirname, "..", "..");
-const DIST = path.join(ROOT, "dist");
-const SHOTS = path.join(ROOT, ".claude", "scratch", "browser", "shots");
-const TYPES = {
-  ".html": "text/html", ".js": "text/javascript", ".css": "text/css", ".json": "application/json",
-  ".webp": "image/webp", ".png": "image/png", ".jpg": "image/jpeg", ".svg": "image/svg+xml",
-  ".ico": "image/x-icon", ".mp4": "video/mp4", ".ttf": "font/ttf", ".otf": "font/otf",
-  ".xml": "application/xml", ".txt": "text/plain",
-};
-
-function serve() {
-  const server = http.createServer((req, res) => {
-    const url = decodeURIComponent(req.url.split("?")[0]);
-    let file = path.join(DIST, url === "/" ? "index.html" : url);
-    if (!file.startsWith(DIST) || !fs.existsSync(file)) {
-      res.writeHead(404).end();
-      return;
-    }
-    res.writeHead(200, { "Content-Type": TYPES[path.extname(file)] || "application/octet-stream" });
-    fs.createReadStream(file).pipe(res);
-  });
-  return new Promise((resolve) => server.listen(0, "127.0.0.1", () => resolve(server)));
-}
 
 const results = [];
 function check(name, ok, detail = "") {
@@ -155,12 +118,8 @@ async function run(browser, base, device) {
 }
 
 (async () => {
-  if (!fs.existsSync(path.join(DIST, "index.html"))) {
-    console.error("Нет dist/index.html — сначала npm run build");
-    process.exit(1);
-  }
   fs.mkdirSync(SHOTS, { recursive: true });
-  const server = await serve();
+  const server = await serveDist();
   const base = `http://127.0.0.1:${server.address().port}/`;
   const browser = await chromium.launch({ channel: "chrome" });
   try {
